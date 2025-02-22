@@ -6,4 +6,6 @@
     font-size: 14px;
     color: white;
     cursor: pointer;
+    height: fit-content;
+    width: fit-content;
 }
