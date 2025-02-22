@@ -9,7 +9,7 @@ function Admin() {
     <>
         <Sidebar userinfo={{username: "Admin_fst", details: "2024/2025"}} links={[{text: "Justifications en attente", Icon: HourglassTopRoundedIcon, highlighted: true}, {text: "Justifications vérifiées", Icon: CheckCircleRoundedIcon, highlighted: false}]}/>
         <div>
-        <Button>Log out</Button>
+        <Button>Log ot</Button>
         </div>
     </>
   )
