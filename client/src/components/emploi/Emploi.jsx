@@ -67,8 +67,21 @@ function Emploi() {
             height='auto'
             aspectRatio={1.8}
             events={[
-              {title: "GLSI", start: '2025-02-24T10:45:00.000Z', end: "2025-02-24T09:00:00.000Z"}
+              {
+                title: "GLSI",
+                startTime: "10:45:00",
+                endTime: "12:00:00", // Adjust the correct time
+                daysOfWeek: [1], // Monday (0 = Sunday, 1 = Monday, ..., 6 = Saturday)
+              }
             ]} // Auto-generate lessons
+            eventClick={(info)=>{
+              console.log(info.event.title);
+              const c = new Date(info.event.startStr)
+              console.log(c.getDate());
+              
+              
+            }
+            }
             
           />
         </div>

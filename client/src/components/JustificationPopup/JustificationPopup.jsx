@@ -7,7 +7,7 @@ function JustificationPopup({popupInfo, setPopupInfo}) {
     <section className="justification-popup-container">
         <div className="justification-popup">
         <div className="popup-header">
-            <p>Les détails de la justification de Ahmed Ben haj amor</p>
+            <p><b>Les détails de la justification de</b> Ahmed Ben haj amor</p>
             <HighlightOffIcon onClick={()=>{
                 setPopupInfo({...popupInfo, show: false})
             }} style={{cursor: "pointer"}} />
