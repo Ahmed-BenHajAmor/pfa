@@ -64,9 +64,27 @@
     width: 100%;
     background-color: #FCFAFA;
     height: 100%;
+    
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+
+}
+.empty-justifications-container{
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
+.justifications-container::-webkit-scrollbar {
+    width: 8px; 
+  }
+  
+  .justifications-container::-webkit-scrollbar-thumb {
+    background: #bababa; 
+    border-radius: 4px; 
+  }
+  
+  .justifications-container::-webkit-scrollbar-thumb:hover {
+    background: #939393;
+  }
+  
 

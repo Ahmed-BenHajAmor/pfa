@@ -1,11 +1,40 @@
 import React, { useState } from 'react'
 import './Admin.css'
-import {Button, Sidebar, Title} from '../'
+import {Button, JustificationsTable, Sidebar, Title} from '../'
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
 import HourglassTopRoundedIcon from '@mui/icons-material/HourglassTopRounded';
 import SearchIcon from '@mui/icons-material/Search';
 
 function Admin() {
+  const [showPopup, setShowPopup] = useState(false)
+  const [justificationsArray, setJustificationsArray] = useState([
+    {
+      cin: "12345678",
+      name: "Ahmed Ben Haj Amor",
+      section: "GLSI",
+      status: 'etudiant',
+      motif: "Rendez-vous important",
+      group: 3,
+      submissionDate: "12 Mars 2024, 08:00",
+      startDateTime: "12 Mars 2024, 08:00",
+      endDateTime: "13 Mars 2024, 12:00",
+      attachments: "Télécharger"
+    },
+    {
+      cin: "12345678",
+      name: "Ahmed Ben Haj Amor",
+      section: "GLSI",
+      status: 'professor',
+      motif: "Rendez-vous important",
+      group: 3,
+      submissionDate: "12 Mars 2024, 08:00",
+      startDateTime: "12 Mars 2024, 08:00",
+      endDateTime: "13 Mars 2024, 12:00",
+      attachments: "Télécharger"
+    }
+  ])
+
+
   return (
     <>
        
@@ -22,9 +51,17 @@ function Admin() {
           <Search />
 
           
-          <div className="justifications-container">
+          
+          {justificationsArray?.length == 0? 
+          <div className="empty-justifications-container justifications-container">
             <Title title={{text: "Aucune justification en attente de vérification n'a été trouvée.", font: 24}} subTitle={"Il n'existe aucun justificatif en attente de vérification."}/>
           </div>
+          : 
+          <div className='justifications-container'>
+            <JustificationsTable justificationsArray={justificationsArray}/>
+          </div>
+          }
+         
 
         </section>
     </>
@@ -34,13 +71,13 @@ function Admin() {
 
 const Search = ()=>{
   return (
-    <div class="search-container">
-        <select class="status-filter">
+    <div className="search-container">
+        <select className="status-filter">
             <option value="status">Filtrer par statut</option>
             <option value="student">Étudiant</option>
             <option value="professor">Professeur</option>
         </select>
-        <div class="search-bar">
+        <div className="search-bar">
             <SearchIcon />
             <input type="text" placeholder="Recherchez un étudiant ou un professeur par nom ou email" />
         </div>
