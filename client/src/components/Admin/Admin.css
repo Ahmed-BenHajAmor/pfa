@@ -3,6 +3,7 @@
     padding: 46px 82px;
     display: flex;
     flex-direction: column;
+    position: relative;
 
 }
 .search-bar{
