@@ -1,13 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 import FullCalendar from "@fullcalendar/react";
 import timeGridPlugin from "@fullcalendar/timegrid";
-import interactionPlugin from "@fullcalendar/interaction"; // Enables interactivity
-import "./Emploi.css"; // Ensure this CSS file exists
-import frLocale from '@fullcalendar/core/locales/fr'; 
+import interactionPlugin from "@fullcalendar/interaction";
+import "./Emploi.css"; 
+import frLocale from "@fullcalendar/core/locales/fr";
+import {EtudiantPopup} from "../EtudiantPopup"; // Import your popup component
 
 
 const currentDate = new Date(); 
 function Emploi() {
+  const [showPopup, setShowPopup] = useState(false);
+  const [selectedEvent, setSelectedEvent] = useState(null);
+  const handleEventClick = (info) => {
+    setSelectedEvent(info.event); // Store event details
+    setShowPopup(true); // Show popup
+  };
     // const generateWeeklyLessons = () => {
     //     let events = [];
     //     let days = [1, 2, 3, 4, 5, 6]; // Monday to Friday (0 = Sunday)
@@ -65,14 +72,23 @@ function Emploi() {
             slotMaxTime="17:35:00"
             slotDuration="00:30:00"
             height='auto'
-            aspectRatio={1.8}
+            aspectRatio={1.5}
             events={[
               {title: "GLSI", start: '2025-02-24T10:45:00.000Z', end: "2025-02-24T09:00:00.000Z"}
             ]} // Auto-generate lessons
             
-          />
-        </div>
-      );
-    }
+            eventClick={handleEventClick} // Open popup on event click
+            />
+      
+            {/* Show EtudiantPopup when an event is clicked */}
+            {showPopup && (
+              <EtudiantPopup
+                event={selectedEvent}
+                onClose={() => setShowPopup(false)}
+              />
+            )}
+          </div>
+        );
+      }
 
 export default Emploi;

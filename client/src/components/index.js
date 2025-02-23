@@ -1,3 +1,5 @@
+import { EtudiantPopup } from './EtudiantPopup'
+
 export {Admin} from './Admin'
 export {Sidebar} from './Sidebar'
 export {Button} from './Button'
@@ -6,3 +8,5 @@ export {JustificationsTable} from './JustificationsTable'
 export {JustificationPopup} from './JustificationPopup'
 export {Enseignant} from './Enseignant'
 export {Emploi} from './Emploi'
+export {ListeEtudiant} from './ListeEtudiant'
+export {EtudiantPopup} from './EtudiantPopup'

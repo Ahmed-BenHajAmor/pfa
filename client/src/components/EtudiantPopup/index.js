@@ -1,0 +1,1 @@
+export {default as EtudiantPopup} from './EtudiantPopup'
