@@ -1,7 +1,7 @@
 import React from 'react'
 import './JustificationsTable.css'
 
-function JustificationsTable({justificationsArray}) {
+function JustificationsTable({justificationsArray, setPopupInfo}) {
   return (
     <table className='justifications-table'>
         <thead>
@@ -21,7 +21,11 @@ function JustificationsTable({justificationsArray}) {
                         <td>{justif.name}</td>
                         <td>{justif.status}</td>
                         <td>{justif.motif}</td>
-                        <td> <p style={{color: "#007BFF", textDecoration: "underline", cursor: "pointer", width: "fit-content"}}> Voir les détails de la justification</p></td>
+                        <td> <p onClick={()=>{
+                            setPopupInfo(popupInfo => {
+                                return {...popupInfo, show: !popupInfo.show}
+                            })
+                        }} style={{color: "#007BFF", textDecoration: "underline", cursor: "pointer", width: "fit-content"}}> Voir les détails de la justification</p></td>
                     </tr>
                 )
             })}

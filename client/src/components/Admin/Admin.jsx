@@ -1,12 +1,25 @@
 import React, { useState } from 'react'
 import './Admin.css'
-import {Button, JustificationsTable, Sidebar, Title} from '../'
+import {Button, JustificationPopup, JustificationsTable, Sidebar, Title} from '../'
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
 import HourglassTopRoundedIcon from '@mui/icons-material/HourglassTopRounded';
 import SearchIcon from '@mui/icons-material/Search';
 
 function Admin() {
-  const [showPopup, setShowPopup] = useState(false)
+  const [popupInfo, setPopupInfo] = useState({show: false, 
+    data:{
+      cin: "12345678",
+      name: "Ahmed Ben Haj Amor",
+      section: "GLSI",
+      status: 'professor',
+      motif: "Rendez-vous important",
+      group: 3,
+      submissionDate: "12 Mars 2024, 08:00",
+      startDateTime: "12 Mars 2024, 08:00",
+      endDateTime: "13 Mars 2024, 12:00",
+      attachments: "Télécharger"
+    }
+  })
   const [justificationsArray, setJustificationsArray] = useState([
     {
       cin: "12345678",
@@ -41,7 +54,7 @@ function Admin() {
         <Sidebar userinfo={{username: "Admin_fst", details: "2024/2025"}} links={[{text: "Justifications en attente", Icon: HourglassTopRoundedIcon, highlighted: true}, {text: "Justifications vérifiées", Icon: CheckCircleRoundedIcon, highlighted: false}]}/>
         
         <section className="admin">
-
+          {popupInfo.show && <JustificationPopup popupInfo={popupInfo} setPopupInfo={setPopupInfo}/>}
           <div style={{display: "flex", width: '100%', justifyContent:'end', marginBottom: "47px"}}>
             <Button>Log out</Button>
           </div>
@@ -58,7 +71,7 @@ function Admin() {
           </div>
           : 
           <div className='justifications-container'>
-            <JustificationsTable justificationsArray={justificationsArray}/>
+            <JustificationsTable setPopupInfo={setPopupInfo} justificationsArray={justificationsArray}/>
           </div>
           }
          
