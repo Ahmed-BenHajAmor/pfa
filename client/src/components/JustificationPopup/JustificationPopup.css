@@ -49,6 +49,7 @@ width: 175px;
     width: fit-content ;
     min-width: 614px;
     table-layout: fixed;
+    box-shadow: 1px 1px 15px #424242;
 }
 
 .justification-popup > table{

@@ -17,6 +17,13 @@
     align-items: center;
   }
 
+.fc-toolbar-title {
+    transform: translateX(-50%);
+    font-size: 1.5rem; /* Adjust font size as needed */
+    white-space: nowrap; /* Prevent title from wrapping */
+  }
+
+
 
 
 
