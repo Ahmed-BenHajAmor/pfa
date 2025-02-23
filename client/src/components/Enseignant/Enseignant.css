@@ -1,0 +1,37 @@
+.enseignant{
+    flex: 1;
+    padding: 46px 82px;
+    display: flex;
+    flex-direction: column;
+
+}
+.logout-button {
+    width: 120px;
+    height: 40px;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #FCFAFA;
+    background-color: #509CDB;
+    font-family: 'Kumbh Sans';
+    font-size: 14px;
+    border-radius:8px;
+    border: none;
+   
+}
+.logout-div{
+        position: absolute;
+        top: 20px;
+        right: 40px;
+}
+.logout-button:hover{
+    background-color: #90bce0;
+}
+.emploiDeTemps {
+    display: flex;
+    margin-top: 100px;
+    margin-left: 50px;
+    height: 130vh;  
+     width: 83%;
+}
