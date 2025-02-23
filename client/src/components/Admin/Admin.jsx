@@ -53,7 +53,7 @@ function Admin() {
        
         <Sidebar userinfo={{username: "Admin_fst", details: "2024/2025"}} links={[{text: "Justifications en attente", Icon: HourglassTopRoundedIcon, highlighted: true}, {text: "Justifications vérifiées", Icon: CheckCircleRoundedIcon, highlighted: false}]}/>
         
-        <section className="admin">
+        <section className="page-section admin">
           {popupInfo.show && <JustificationPopup popupInfo={popupInfo} setPopupInfo={setPopupInfo}/>}
           <div style={{display: "flex", width: '100%', justifyContent:'end', marginBottom: "47px"}}>
             <Button>Log out</Button>
