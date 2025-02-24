@@ -3,6 +3,7 @@ import './JustificationPopup.css'
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 
 function JustificationPopup({popupInfo, setPopupInfo}) {
+
   return (
     <section className="justification-popup-container">
         <div className="justification-popup">

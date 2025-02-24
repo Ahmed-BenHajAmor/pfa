@@ -1,29 +1,44 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './JustificationsTable.css'
+import { Title } from '../Title'
+import { AdminApiCalls } from '../../apiCalls.js/admin'
 
-function JustificationsTable({justificationsArray, setPopupInfo}) {
+function JustificationsTable({setPopupInfo}) {
+  const tableHead = ["CIN", "Nom", "Statut", "Motif", "details"]
+  const [justificationsArray, setJustificationsArray] = useState([])
+  useEffect(()=>{
+    setJustificationsArray(AdminApiCalls.getJustifications())
+  }, [])
+
+  if(justificationsArray.length == 0){
+    return <div className="empty-justifications-container justifications-container">
+    <Title title={{text: "Aucune justification en attente de vérification n'a été trouvée.", font: 24}} subTitle={"Il n'existe aucun justificatif en attente de vérification."}/>
+  </div>
+  }
   return (
+    <div className='justifications-container'>
+
     <table className='justifications-table'>
         <thead>
             <tr>
-                <th>CIN</th>
-                <th>Nom</th>
-                <th>Statut</th>
-                <th>Motif</th>
-                <th>details</th>
+                {tableHead.map(str=>{
+                    return <th>{str}</th>
+                })}
+               
             </tr>
         </thead>
         <tbody>
             {justificationsArray.map(justif=>{
                 return (
-                    <tr className={justif.status.toLowerCase() == "etudiant" ? 'student-row' : 'professor-row'}>
+                    <tr key={justif._id} className={justif.status.toLowerCase() == "etudiant" ? 'student-row' : 'professor-row'}>
                         <td>{justif.cin}</td>
                         <td>{justif.name}</td>
                         <td>{justif.status}</td>
                         <td>{justif.motif}</td>
                         <td> <p onClick={()=>{
+                            const {_id, ...data} = justif
                             setPopupInfo(popupInfo => {
-                                return {...popupInfo, show: !popupInfo.show}
+                                return {data, show: !popupInfo.show}
                             })
                         }} style={{color: "#007BFF", textDecoration: "underline", cursor: "pointer", width: "fit-content"}}> Voir les détails de la justification</p></td>
                     </tr>
@@ -31,6 +46,7 @@ function JustificationsTable({justificationsArray, setPopupInfo}) {
             })}
         </tbody>
     </table>
+    </div>
   )
 }
 

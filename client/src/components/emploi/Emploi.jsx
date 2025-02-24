@@ -90,7 +90,6 @@ function Emploi() {
             }
             }
             
-            eventClick={handleEventClick} // Open popup on event click
             />
       
             {/* Show EtudiantPopup when an event is clicked */}

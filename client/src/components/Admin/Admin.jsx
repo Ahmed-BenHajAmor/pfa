@@ -7,46 +7,8 @@ import SearchIcon from '@mui/icons-material/Search';
 
 function Admin() {
   const [popupInfo, setPopupInfo] = useState({show: false, 
-    data:{
-      cin: "12345678",
-      name: "Ahmed Ben Haj Amor",
-      section: "GLSI",
-      status: 'professor',
-      motif: "Rendez-vous important",
-      group: 3,
-      submissionDate: "12 Mars 2024, 08:00",
-      startDateTime: "12 Mars 2024, 08:00",
-      endDateTime: "13 Mars 2024, 12:00",
-      attachments: "Télécharger"
-    }
+    data:{}
   })
-  const [justificationsArray, setJustificationsArray] = useState([
-    {
-      cin: "12345678",
-      name: "Ahmed Ben Haj Amor",
-      section: "GLSI",
-      status: 'etudiant',
-      motif: "Rendez-vous important",
-      group: 3,
-      submissionDate: "12 Mars 2024, 08:00",
-      startDateTime: "12 Mars 2024, 08:00",
-      endDateTime: "13 Mars 2024, 12:00",
-      attachments: "Télécharger"
-    },
-    {
-      cin: "12345678",
-      name: "Ahmed Ben Haj Amor",
-      section: "GLSI",
-      status: 'professor',
-      motif: "Rendez-vous important",
-      group: 3,
-      submissionDate: "12 Mars 2024, 08:00",
-      startDateTime: "12 Mars 2024, 08:00",
-      endDateTime: "13 Mars 2024, 12:00",
-      attachments: "Télécharger"
-    }
-  ])
-
 
   return (
     <>
@@ -65,15 +27,9 @@ function Admin() {
 
           
           
-          {justificationsArray?.length == 0? 
-          <div className="empty-justifications-container justifications-container">
-            <Title title={{text: "Aucune justification en attente de vérification n'a été trouvée.", font: 24}} subTitle={"Il n'existe aucun justificatif en attente de vérification."}/>
-          </div>
-          : 
-          <div className='justifications-container'>
-            <JustificationsTable setPopupInfo={setPopupInfo} justificationsArray={justificationsArray}/>
-          </div>
-          }
+          
+          <JustificationsTable setPopupInfo={setPopupInfo} />
+          
          
 
         </section>
@@ -92,7 +48,7 @@ const Search = ()=>{
         </select>
         <div className="search-bar">
             <SearchIcon />
-            <input type="text" placeholder="Recherchez un étudiant ou un professeur par nom ou email" />
+            <input type="text" placeholder="Recherchez un étudiant ou un professeur par nom" />
         </div>
 
     </div>
