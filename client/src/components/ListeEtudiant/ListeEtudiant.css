@@ -10,10 +10,12 @@
   
   width: 100%;
 }
-button{
+.boutton-present,.boutton-absent{
   font-family: 'Roboto';font-size: 14px;
   margin-left: 25px;
   border: none;
+  cursor:pointer ;
+  
 }
 .table-etudiant tr,.table-etudiant td {
   height: 50px;
