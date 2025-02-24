@@ -10,13 +10,6 @@
   
   width: 100%;
 }
-.boutton-present,.boutton-absent{
-  font-family: 'Roboto';font-size: 14px;
-  margin-left: 25px;
-  border: none;
-  cursor:pointer ;
-  
-}
 .table-etudiant tr,.table-etudiant td {
   height: 50px;
   text-align: center;
@@ -44,6 +37,9 @@
   height: 26px;
   width: 82px;
   border-color: white;
+  font-family: 'Roboto';font-size: 14px;
+  margin-left: 25px;
+  border: none;
 }
 .boutton-absent{
   
@@ -53,4 +49,7 @@
   height: 26px;
   width: 82px;
   border-color: white;
+  font-family: 'Roboto';font-size: 14px;
+  margin-left: 25px;
+  border: none;
 }
