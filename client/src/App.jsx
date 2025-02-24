@@ -7,7 +7,7 @@ function App() {
 
   return (
     <>
-      <SignIn />
+      <Admin />
     </>
    
    
