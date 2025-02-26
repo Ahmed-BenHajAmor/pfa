@@ -29,7 +29,7 @@ function Sidebar({userinfo, links}) {
 
 const Link = ({linkInfo})=>{
     return (
-            <a className={`link-container ${linkInfo.highlighted == true && "highlight"}`} href="#">
+            <a className={`link-container ${linkInfo.highlighted == true ? "highlight" : "link-container-hover"}`} href="#">
                 <linkInfo.Icon />
                 <p>{linkInfo.text}</p>
             </a>
