@@ -10,10 +10,7 @@ function App() {
 
   return (
     <>
-    <div style={{}}>
-    <Etudiant />
-    
-    </div>
+      <Enseignant />
     </>
    
    

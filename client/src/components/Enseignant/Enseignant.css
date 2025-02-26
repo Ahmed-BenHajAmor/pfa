@@ -1,8 +1,10 @@
-.enseignant{
+.enseignant-section{
     flex: 1;
     padding: 46px 82px;
     display: flex;
     flex-direction: column;
+    max-height: 100%;
+    overflow-y: auto;
 
 }
 .logout-button {
@@ -46,7 +48,4 @@ border-radius: 4px;
 background: #939393;
 }
 
-.enseignant-section{
-    overflow-y: scroll;
-}
-  
+
