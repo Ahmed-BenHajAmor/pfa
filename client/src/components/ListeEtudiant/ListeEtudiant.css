@@ -23,10 +23,8 @@
 
   
     max-height:fit-content; /* Adjust based on your needs */
-    overflow-y: auto; /* Enables vertical scrolling */
     border: 1px solid #ddd;
     width: fit-content; /* Keeps width equal to table content */
-    margin-right: auto; /* Aligns scrollbar to the table */
 
  
 }
