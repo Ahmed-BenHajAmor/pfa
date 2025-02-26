@@ -3,14 +3,14 @@ import './Enseignant.css'
 import HowToRegIcon from '@mui/icons-material/HowToReg';
 import QueryStatsIcon from '@mui/icons-material/QueryStats';
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
-import { Button, Emploi, EtudiantPopup, Sidebar, Title } from '..';
+import { Button, Emploi,  Sidebar, Title } from '..';
 
 
 
 
 
 function Enseignant() {
-  const [showPopup, setShowPopup] = useState(false);
+  
   
   return (
     <>
@@ -21,12 +21,7 @@ function Enseignant() {
             <Button>Log out</Button>
       </div>
       <Title title={{text: "Votre emploi de temps", font: 36}} subTitle={"Gerer vos séances"}/>
-      <section className='emploi-de-temps'> <Emploi setShowPopup={setShowPopup} /></section>
-      {showPopup && (
-              <EtudiantPopup
-                onClose={() => setShowPopup(false)}
-              />
-            )}
+      <section className='emploi-de-temps'> <Emploi  /></section>
       </section>
     </>
   )

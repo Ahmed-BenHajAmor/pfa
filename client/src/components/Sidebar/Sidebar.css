@@ -47,9 +47,9 @@
     cursor: pointer;
     color: white;
 }
-.link-container:hover{
-    background-color: #509CDB;
-    transition: 1.5s;
+.link-container.not-highlighted:hover{
+    background-color: #a9aaaa56;
+    transition: 0.5s;
 }
 .links-container{
     padding: 0 25px;

@@ -10,11 +10,25 @@ import {EtudiantPopup} from "../EtudiantPopup"; // Import your popup component
 const currentDate = new Date(); 
 function Emploi() {
   const [showPopup, setShowPopup] = useState(false);
-  const [selectedEvent, setSelectedEvent] = useState(null);
   const handleEventClick = (info) => {
-    setSelectedEvent(info.event); // Store event details
-    setShowPopup(true); // Show popup
+    setShowPopup(true)
   };
+  const events = [
+    {
+      title: "GLSI",
+      daysOfWeek: [1], // Monday
+      startTime: "10:45:00",
+      endTime: "12:00:00",
+      
+    },
+    {
+      title: "Maths",
+      daysOfWeek: [3], // Wednesday
+      startTime: "13:00:00",
+      endTime: "14:30:00",
+     
+    },
+  ];
 
       return (
         <div className="emploi-container">
@@ -39,21 +53,11 @@ function Emploi() {
             slotDuration="00:30:00"
             height='auto'
             aspectRatio={1.5}
-            
-            events={[
-              {
-                title: "GLSI",
-                startTime: "10:45:00",
-                endTime: "12:00:00", 
-                daysOfWeek: [1], 
-              }
-            ]} 
+            events={events}
             eventClick={handleEventClick}
             />
             {showPopup && (
-              <EtudiantPopup
-                event={selectedEvent}
-                onClose={() => setShowPopup(false)}
+              <EtudiantPopup    onClose={() => setShowPopup(false)}
               />
             )}
           </div>
