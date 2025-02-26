@@ -8,13 +8,8 @@ import {EtudiantPopup} from "../EtudiantPopup"; // Import your popup component
 
 
 const currentDate = new Date(); 
-function Emploi() {
-  const [showPopup, setShowPopup] = useState(false);
-  const [selectedEvent, setSelectedEvent] = useState(null);
-  const handleEventClick = (info) => {
-    setSelectedEvent(info.event); // Store event details
-    setShowPopup(true); // Show popup
-  };
+function Emploi({setShowPopup}) {
+  
     // const generateWeeklyLessons = () => {
     //     let events = [];
     //     let days = [1, 2, 3, 4, 5, 6]; // Monday to Friday (0 = Sunday)
@@ -82,10 +77,8 @@ function Emploi() {
               }
             ]} // Auto-generate lessons
             eventClick={(info)=>{
-              console.log(info.event.title);
-              const c = new Date(info.event.startStr)
-              console.log(c.getDate());
               
+              setShowPopup(true)
               
             }
             }
@@ -93,12 +86,9 @@ function Emploi() {
             />
       
             {/* Show EtudiantPopup when an event is clicked */}
-            {showPopup && (
-              <EtudiantPopup
-                event={selectedEvent}
-                onClose={() => setShowPopup(false)}
-              />
-            )}
+            
+
+
           </div>
         );
       }
