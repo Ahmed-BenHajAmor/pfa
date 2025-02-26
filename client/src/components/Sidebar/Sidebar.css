@@ -47,8 +47,8 @@
     cursor: pointer;
     color: white;
 }
-.link-container-hover:hover{
-    background-color: #cbcbcb26;
+.link-container.not-highlighted:hover{
+    background-color: #a9aaaa33;
 }
 .links-container{
     padding: 0 25px;

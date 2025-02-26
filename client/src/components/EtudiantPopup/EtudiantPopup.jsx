@@ -5,9 +5,11 @@ import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 
 function  EtudiantPopup({ onClose }) {
   useEffect(() => {
-    document.body.style.overflow = "hidden"; // Disable scrolling
+    document.getElementsByClassName("enseignant-section")[0].style.overflow = "hidden"; // Disable scrolling
+    document.getElementsByClassName("Etudiant-popup-container")[0].style.marginTop = `${document.getElementsByClassName("enseignant-section")[0].scrollTop}px`
+    
     return () => {
-      document.body.style.overflow = "auto"; 
+      document.getElementsByClassName("enseignant-section")[0].style.overflow = "auto"; 
     };
   }, []);
 
