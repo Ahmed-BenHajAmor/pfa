@@ -10,9 +10,10 @@ function App() {
 
   return (
     <>
+    <div style={{}}>
     <Etudiant />
-    <div className='MyGraph'><MyGraph/></div>
-    <AbsenceTable/>
+    
+    </div>
     </>
    
    

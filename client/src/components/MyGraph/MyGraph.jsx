@@ -9,9 +9,9 @@ const data = [
 
 const AttendanceChart = () => {
   return (
-    <div style={{position:'relative'}} className="flex flex-col items-center bg-white p-6 shadow-lg rounded-2xl">
+    <div style={{position:'relative'}}>
       <h2 style={{color:'grey',fontWeight:'500'}}>Statistiques</h2>
-      <h2 className="text-xl font-bold text-gray-800">Taux de présence</h2>
+      <h2 >Taux de présence</h2>
       <select name="" id="" style={{backgroundColor:'#F8F8FF',color:'#615E83',borderRadius:'20px',padding:'2% 3%',position:'absolute',top:'4%',right:'0',border:'0'}}>
         <option value="">2025</option>
         <option value="">2024</option>
