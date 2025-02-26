@@ -15,41 +15,7 @@ function Emploi() {
     setSelectedEvent(info.event); // Store event details
     setShowPopup(true); // Show popup
   };
-    // const generateWeeklyLessons = () => {
-    //     let events = [];
-    //     let days = [1, 2, 3, 4, 5, 6]; // Monday to Friday (0 = Sunday)
-    
-    //     days.forEach(day => {
-    //       let current = new Date();
-    //       // Set to the beginning of the week and adjust for the specific day
-    //       current.setDate(current.getDate() - current.getDay() + day);
-    //       current.setHours(8, 30, 0, 0); // Start at 8:30 AM
-    
-    //       let endTime = new Date(current);
-    //       endTime.setHours(17, 0, 0, 0); // End at 5:00 PM
-    
-    //       let lessonCount = 1; // To label lessons
-    
-    //       // Generate lessons until the end time
-    //       while (current.getTime() + 90 * 60000 <= endTime.getTime()) {
-    //         let lessonStart = new Date(current);
-    //         let lessonEnd = new Date(lessonStart.getTime() + 90 * 60000); // 1 hour 30 minutes
-    
-    //         events.push({
-    //           title: `Lesson ${lessonCount}`, // Lesson title
-    //           start: lessonStart.toISOString(),
-    //           end: lessonEnd.toISOString(),
-    //         });
-    
-    //         // Add a 15-minute break before the next lesson
-    //         current = new Date(lessonEnd.getTime() + 15 * 60000);
-    //         lessonCount++;
-    //       }
-    //     });
-    //     console.log(events);
-        
-    //     return events;
-    //   };
+
       return (
         <div className="emploi-container">
           <FullCalendar
@@ -59,40 +25,31 @@ function Emploi() {
             slotLabelInterval="01:30:00"
             allDaySlot={false}
             initialDate={currentDate}
-            hiddenDays={[0]} // Hides Sunday
+            hiddenDays={[0]} // Pour enlever le Dimanche
             headerToolbar={{
-              left: "prev,next today",
+              left: "prev today",
               center: "title",
-              right: "",
-            }}
+              right: "", }}
+
             buttonText={{
-              today: 'Cette semaine'
-            }}
+              today: 'Cette semaine'}}
+
             slotMinTime="08:30:00"
             slotMaxTime="17:35:00"
             slotDuration="00:30:00"
             height='auto'
             aspectRatio={1.5}
+            
             events={[
               {
                 title: "GLSI",
                 startTime: "10:45:00",
-                endTime: "12:00:00", // Adjust the correct time
-                daysOfWeek: [1], // Monday (0 = Sunday, 1 = Monday, ..., 6 = Saturday)
+                endTime: "12:00:00", 
+                daysOfWeek: [1], 
               }
-            ]} // Auto-generate lessons
-            eventClick={(info)=>{
-              console.log(info.event.title);
-              const c = new Date(info.event.startStr)
-              console.log(c.getDate());
-              
-              
-            }
-            }
-            
+            ]} 
+            eventClick={handleEventClick}
             />
-      
-            {/* Show EtudiantPopup when an event is clicked */}
             {showPopup && (
               <EtudiantPopup
                 event={selectedEvent}
