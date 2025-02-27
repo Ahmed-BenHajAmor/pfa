@@ -7,7 +7,7 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import DateRangeIcon from '@mui/icons-material/DateRange';
 import WatchIcon from '@mui/icons-material/Watch';
 
-function EnvoiJustificationProf({username, links}) {
+function EnvoiJustificationEtud({username, links}) {
   return (
     <>
     <Sidebar userinfo={{username: "Ahmed Bel Haj Amor"}} links={[{text: "Taux de presence", Icon: QueryStatsIcon, highlighted: false}, {text: "Justifications vérifiées", Icon: CheckCircleRoundedIcon, highlighted: true}]}/>
@@ -74,4 +74,4 @@ function Input({text}){
   )
 }
 
-export default EnvoiJustificationProf;
+export default EnvoiJustificationEtud;
