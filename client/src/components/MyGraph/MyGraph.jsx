@@ -7,7 +7,7 @@ const data = [
   { name: "Absence justifiée", value: 20, color: "#FFC107" },
 ];
 
-const AttendanceChart = () => {
+const MyGraph = () => {
   return (
     <div style={{ position: "relative" }}>
       <h2 style={{ color: "grey", fontWeight: "500" }}>Statistiques</h2>
@@ -72,4 +72,4 @@ const AttendanceChart = () => {
   );
 };
 
-export default AttendanceChart;
+export default MyGraph;
