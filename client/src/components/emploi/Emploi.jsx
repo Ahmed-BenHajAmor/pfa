@@ -82,10 +82,7 @@ function Emploi() {
               }
             ]} // Auto-generate lessons
             eventClick={(info)=>{
-              console.log(info.event.title);
-              const c = new Date(info.event.startStr)
-              console.log(c.getDate());
-              
+              setShowPopup(true)
               
             }
             }
