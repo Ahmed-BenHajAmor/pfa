@@ -16,52 +16,49 @@ function EnvoiJustificationEtud({username, links}) {
         <Button>Se Deconnecter</Button>
       </div>
 
-      <section className="main">
+      <section className='marquer-absence'>
 
-        <section className='marquerabsence'>
+        <section className='marquer-absence-input'>
 
-          <section className='Input'>
+          <h1>Marquer votre absence</h1>
 
-            <h1>Marquer votre absence</h1>
-
-            <div className='input-fields' >
-              <Input text="Date de Debut "/>
-              <Input text="Heure de Debut "/>
-            </div>
-
-            <div className='input-fields' >
-              <Input text="Date de Fin "/>
-              <Input text="Heure de Fin "/>
-            </div>
-
-            <div style={{width:"96%"}} >
-              <Input text="Motif"/>
-            </div>
-
-          </section>
-
-          <section className='justification-ajout'>
-
-            <div>
-              <AddCircleOutlineIcon></AddCircleOutlineIcon>
-              <label htmlFor="">Ajouter une preuve</label>
-            </div>
-          </section>
-        </section>
-
-        <section className='envoyer-button'>
-        
-          <div></div>
-        
-          <div>
-            <input className='button' type="button" value='Envoyer' name="" id="" />
+          <div className='input-fields' >
+            <Input text="Date de Debut "/>
+            <Input text="Heure de Debut "/>
           </div>
-        
+
+          <div className='input-fields' >
+            <Input text="Date de Fin "/>
+            <Input text="Heure de Fin "/>
+          </div>
+
+          <div style={{width:"96%"}} >
+            <Input text="Motif"/>
+          </div>
+
         </section>
 
+        <section className='justification-ajout'>
+
+          <div>
+            <AddCircleOutlineIcon></AddCircleOutlineIcon>
+            <label htmlFor="">Ajouter une preuve</label>
+          </div>
+        </section>
+      </section>
+
+      <section className='envoyer-button'>
+      
+        <div></div>
+      
+        <div>
+          <input className='button' type="button" value='Envoyer' name="" id="" />
+        </div>
+      
       </section>
 
     </section>
+
     </>
   )
 }
