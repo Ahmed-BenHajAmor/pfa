@@ -20,6 +20,9 @@ background: #939393;
     display: flex;
     width: 100%;
     justify-content: space-between;
+    margin-bottom: 140px;
+    padding: 50px 100px 0 100px
+
 }
 .marquer-absence h1{
     color: #494949;
@@ -70,7 +73,7 @@ background: #939393;
     color: #666;
     background-color: #e0e0e0;
     width: 336px;
-    height: 319px;
+    height: 100%;
 }
 
 .envoyer-button{
