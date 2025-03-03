@@ -11,7 +11,7 @@ const MyGraph = () => {
   return (
     <div style={{ position: "relative" }}>
       <h2 style={{ color: "grey", fontWeight: "500" }}>Statistiques</h2>
-      <h2>Taux de présence</h2>
+      <h1 style={{fontSize:'30px'}}>Taux de présence</h1>
       <select
         name=""
         id=""
@@ -36,9 +36,9 @@ const MyGraph = () => {
         <PieChart width={300} height={300}>
           <Pie
             data={data}
-            cx="50%"
+            cx="40%"
             cy="50%"
-            innerRadius={55}
+            innerRadius={54}
             outerRadius={100}
             fill="#8884d8"
             dataKey="value"
@@ -52,9 +52,9 @@ const MyGraph = () => {
         </PieChart>
 
         {/* Legend */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
           {data.map((item, index) => (
-            <div key={index} style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+            <div key={index} style={{ display: "flex", alignItems: "center", gap: "5px"}}>
               <div
                 style={{
                   width: "12px",
@@ -62,8 +62,9 @@ const MyGraph = () => {
                   backgroundColor: item.color,
                   borderRadius: "50%",
                 }}
+                
               ></div>
-              <span style={{ color: item.color, fontSize: "14px" }}>{item.name}</span>
+              <span style={{ color: item.color, fontSize: "20px" }}>{item.name}</span>
             </div>
           ))}
         </div>
