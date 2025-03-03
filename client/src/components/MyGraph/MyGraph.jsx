@@ -7,40 +7,69 @@ const data = [
   { name: "Absence justifiée", value: 20, color: "#FFC107" },
 ];
 
-const AttendanceChart = () => {
+const MyGraph = () => {
   return (
-    <div style={{position:'relative'}}>
-      <h2 style={{color:'grey',fontWeight:'500'}}>Statistiques</h2>
-      <h2 >Taux de présence</h2>
-      <select name="" id="" style={{backgroundColor:'#F8F8FF',color:'#615E83',borderRadius:'20px',padding:'2% 3%',position:'absolute',top:'4%',right:'0',border:'0'}}>
+    <div style={{ position: "relative" }}>
+      <h2 style={{ color: "grey", fontWeight: "500" }}>Statistiques</h2>
+      <h2>Taux de présence</h2>
+      <select
+        name=""
+        id=""
+        style={{
+          backgroundColor: "#F8F8FF",
+          color: "#615E83",
+          borderRadius: "20px",
+          padding: "2% 3%",
+          position: "absolute",
+          top: "4%",
+          right: "0",
+          border: "0",
+        }}
+      >
         <option value="">2025</option>
         <option value="">2024</option>
         <option value="">2023</option>
       </select>
-      <hr style={{marginTop:'5%',marginBottom:'3%'}}/>
-      <PieChart width={300} height={300}>
-        <Pie 
-          data={data}
-          cx="50%"
-          cy="50%"
-          innerRadius={55}
-          outerRadius={100}
-          fill="#8884d8"
-          dataKey="value"
-          label={({ percent }) => `${(percent * 100).toFixed(0)}%`}
-        >
-          {data.map((entry, index) => (
-            
-            <Cell  key={`cell-${index}`} fill={entry.color} />
+      <hr style={{ marginTop: "5%", marginBottom: "3%" }} />
+
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "20px" }}>
+        <PieChart width={300} height={300}>
+          <Pie
+            data={data}
+            cx="50%"
+            cy="50%"
+            innerRadius={55}
+            outerRadius={100}
+            fill="#8884d8"
+            dataKey="value"
+            label={({ percent }) => `${(percent * 100).toFixed(0)}%`}
+          >
+            {data.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={entry.color} />
+            ))}
+          </Pie>
+          <Tooltip />
+        </PieChart>
+
+        {/* Legend */}
+        <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+          {data.map((item, index) => (
+            <div key={index} style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+              <div
+                style={{
+                  width: "12px",
+                  height: "12px",
+                  backgroundColor: item.color,
+                  borderRadius: "50%",
+                }}
+              ></div>
+              <span style={{ color: item.color, fontSize: "14px" }}>{item.name}</span>
+            </div>
           ))}
-        </Pie>
-        <Tooltip />
-        <Legend />
-      </PieChart>
+        </div>
+      </div>
     </div>
-    
-    
   );
 };
 
-export default AttendanceChart;
+export default MyGraph;

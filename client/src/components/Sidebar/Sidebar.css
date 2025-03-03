@@ -48,8 +48,7 @@
     color: white;
 }
 .link-container.not-highlighted:hover{
-    background-color: #a9aaaa56;
-    transition: 0.5s;
+    background-color: #a9aaaa33;
 }
 .links-container{
     padding: 0 25px;

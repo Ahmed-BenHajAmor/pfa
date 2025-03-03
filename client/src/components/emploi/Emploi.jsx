@@ -11,6 +11,8 @@ const currentDate = new Date();
 function Emploi() {
   const [showPopup, setShowPopup] = useState(false);
   const handleEventClick = (info) => {
+    console.log(info);
+    
     setShowPopup(true)
   };
   const events = [
@@ -19,6 +21,7 @@ function Emploi() {
       daysOfWeek: [1], // Monday
       startTime: "10:45:00",
       endTime: "12:00:00",
+
       
     },
     {
@@ -57,7 +60,7 @@ function Emploi() {
             eventClick={handleEventClick}
             />
             {showPopup && (
-              <EtudiantPopup    onClose={() => setShowPopup(false)}
+              <EtudiantPopup  onClose={() => setShowPopup(false)}
               />
             )}
           </div>
