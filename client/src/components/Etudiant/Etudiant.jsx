@@ -16,10 +16,10 @@ function Etudiant() {
               <Button>Log out</Button>
             </div>
             <div className='etudiant-stats '>
-              <div style={{boxShadow:'0px 2px 6px 0px rgb(211, 211, 214)',borderRadius:'20px',padding:'6%'}}><MyGraph/></div>
-              <div style={{boxShadow:'0px 2px 6px 0px rgb(211, 211, 214)',borderRadius:'20px',padding:'6%'}}><CoherenceChart/></div>
-              <div style={{boxShadow:'0px 2px 6px 0px rgb(211, 211, 214)',borderRadius:'20px',padding:'6%'}}><JustificationImpactChart/></div>
-              <div style={{boxShadow:'0px 2px 6px 0px rgb(211, 211, 214)',borderRadius:'20px',padding:'6%'}} ><AbsenceTable/></div>
+              <div style={{boxShadow:'0px 2px 6px 0px rgb(211, 211, 214)',borderRadius:'20px',padding:'32px'}}><MyGraph/></div>
+              <div style={{boxShadow:'0px 2px 6px 0px rgb(211, 211, 214)',borderRadius:'20px',padding:'32px'}}><CoherenceChart/></div>
+              <div style={{boxShadow:'0px 2px 6px 0px rgb(211, 211, 214)',borderRadius:'20px',padding:'32px'}}><JustificationImpactChart/></div>
+              <div style={{boxShadow:'0px 2px 6px 0px rgb(211, 211, 214)',borderRadius:'20px',padding:'32px'}} ><AbsenceTable/></div>
               
               
             </div>
