@@ -1,12 +1,13 @@
 
 .etudiant{
     overflow-y: auto;
+    
 }
 
 .etudiant-stats{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
-    gap: 10px;
+    gap: 30px;
     
 }
