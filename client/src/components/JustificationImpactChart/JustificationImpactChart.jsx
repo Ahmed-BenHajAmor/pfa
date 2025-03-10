@@ -8,7 +8,7 @@ const JustificationImpactChart = () => {
   ];
 
   return (
-    <div style={{ width: '100%', maxWidth: '400px', margin: '0 auto' }}>
+    <div style={{ width: '100%', margin: '0 auto' }}>
       <h3 style={{ textAlign: 'center', color: '#666' }}>Statistique</h3>
       <h2 style={{ textAlign: 'center', color: '#444' }}>Impact des Justifications</h2>
       <BarChart
