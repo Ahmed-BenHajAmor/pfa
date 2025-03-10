@@ -5,9 +5,12 @@ import ListeEtudiant from "../ListeEtudiant/ListeEtudiant";
 function EtudiantPopup({ onClose }) {
   // ✅ Block scrolling when popup appears
   useEffect(() => {
-    document.body.style.overflow = "hidden"; // Disable scrolling
+    document.getElementsByClassName("enseignant-section")[0].style.overflow = "hidden"; // Disable scrolling
+    document.getElementsByClassName("Etudiant-popup-container")[0].style.marginTop = `${document.getElementsByClassName("enseignant-section")[0].scrollTop}px`
+    
     return () => {
       document.body.style.overflow = "auto"; // Restore scrolling when popup closes
+      document.getElementsByClassName("enseignant-section")[0].style.overflow = "auto"; 
     };
   }, []);
 
@@ -20,7 +23,11 @@ function EtudiantPopup({ onClose }) {
 
   return (
     <section className="Etudiant-popup-container" onClick={handleOverlayClick}>
-      <div className=" blur-overlay">
+      <div className="Etudiant-popup">
+       
+
+    
+
         <ListeEtudiant />
       </div>
     </section>

@@ -1,5 +1,5 @@
 import './App.css'
-import { Admin, SignIn } from './components'
+import { Admin, EnvoiJustificationEtud, SignIn } from './components'
 import { Enseignant } from './components/Enseignant'
 import { Etudiant } from './components/Etudiant'
 import { AbsenceTable } from './components/AbsenceTable'
@@ -10,7 +10,7 @@ function App() {
 
   return (
     <>
-      <Enseignant />
+      <EnvoiJustificationEtud />
     </>
    
    

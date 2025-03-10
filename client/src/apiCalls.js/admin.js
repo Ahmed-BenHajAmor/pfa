@@ -1,6 +1,8 @@
 export class AdminApiCalls{
     static getJustifications(){
-        return [
+        
+      
+      return [
             {
               _id: 1,
               cin: "12345678",

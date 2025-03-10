@@ -11,13 +11,15 @@ function Etudiant() {
     return (
       <>
           <Sidebar userinfo={{username: "Mechergui wassim", details: "LCS2 G2 2024/2025"}} links={[{text: "Taux de présence", Icon: QueryStatsIcon, highlighted: true}, {text: "Justifications vérifiées", Icon: CheckCircleRoundedIcon, highlighted: false}]}/>
-          <div style={{display:'flex',flexDirection:'column'}}>
-            <div className='logout' style={{}}><Button>Log out</Button></div>
-            <div className='container'>
+          <section className='page-section etudiant'>
+            <div style={{display: "flex", width: '100%', justifyContent:'end', marginBottom: "47px"}}>
+              <Button>Log out</Button>
+            </div>
+            <div className='etudiant-stats '>
               <MyGraph/>
               <AbsenceTable/>
             </div>
-          </div>
+          </section>
 
       </>
     )
