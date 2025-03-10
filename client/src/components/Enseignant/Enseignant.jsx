@@ -14,7 +14,7 @@ function Enseignant() {
   
   const [sideBarLinksArray, setSideBarLinksArray] = useState([
     {text: "Suivie présence", Icon: HowToRegIcon, highlighted: true, route:'/'}, {text: "Justifications vérifiées", Icon: CheckCircleRoundedIcon, highlighted: false,
-     route:'/envoyer-justification'}, {text: "Taux de présence", Icon: QueryStatsIcon, highlighted: false, route:'/'}
+     route:'/envoyer-justification'}
     ])
   return (
     <>
