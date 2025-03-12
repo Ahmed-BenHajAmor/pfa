@@ -3,7 +3,8 @@ import './Enseignant.css'
 import HowToRegIcon from '@mui/icons-material/HowToReg';
 import QueryStatsIcon from '@mui/icons-material/QueryStats';
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
-import { Button, Emploi,  Sidebar, Title } from '..';
+import { Sidebar } from '..';
+import { Outlet } from 'react-router';
 
 
 
@@ -11,18 +12,14 @@ import { Button, Emploi,  Sidebar, Title } from '..';
 
 function Enseignant() {
   
-  
+  const [sideBarLinksArray, setSideBarLinksArray] = useState([
+    {text: "Suivie présence", Icon: HowToRegIcon, highlighted: true, route:'/'}, {text: "Justifications vérifiées", Icon: CheckCircleRoundedIcon, highlighted: false,
+     route:'/envoyer-justification'}
+    ])
   return (
     <>
-      <Sidebar userinfo={{username: "MR.Faouzi moussa"}} links={[{text: "Suivie présence", Icon: HowToRegIcon, highlighted: true}, {text: "Justifications vérifiées", Icon: CheckCircleRoundedIcon, highlighted: false}, {text: "Taux de présence", Icon: QueryStatsIcon, highlighted: false}]}/>
-      <section className="page-section enseignant-section">
-
-      <div style={{display: "flex", width: '100%', justifyContent:'end', marginBottom: "47px"}}>
-            <Button>Log out</Button>
-      </div>
-      <Title title={{text: "Votre emploi de temps", font: 36}} subTitle={"Gerer vos séances"}/>
-      <section className='emploi-de-temps'> <Emploi  /></section>
-      </section>
+      <Sidebar userinfo={{username: "MR.Faouzi moussa"}} links={sideBarLinksArray} setSideBarLinksArray={setSideBarLinksArray}/>
+      <Outlet />
     </>
   )
 }

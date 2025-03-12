@@ -1,12 +1,7 @@
-.logout{
-    position: absolute;
-    top :3%;
-    right: 3%;
-}
-
 
 .etudiant{
     overflow-y: auto;
+    
 }
 
 .etudiant-stats{
@@ -14,4 +9,5 @@
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
     gap: 30px;
+    
 }

@@ -1,9 +1,10 @@
 import React from 'react'
 import './Sidebar.css'
 import logo from '../../assets/logo.png'
+import { Link } from 'react-router'
 
 
-function Sidebar({userinfo, links}) {
+function Sidebar({userinfo, links, setSideBarLinksArray}) {
   return (
     <nav className="sidebar">
         <div className="logo-userinfo">
@@ -18,7 +19,7 @@ function Sidebar({userinfo, links}) {
 
         <div className='links-container'>
                 {links.map(link=>{
-                    return <Link linkInfo={link}/>
+                    return <SideBarLink key={link.text} linkInfo={link} links={links} setSideBarLinksArray={setSideBarLinksArray}/>
                 })}
         </div>
 
@@ -27,12 +28,22 @@ function Sidebar({userinfo, links}) {
 }
 
 
-const Link = ({linkInfo})=>{
+const SideBarLink = ({linkInfo, links, setSideBarLinksArray})=>{
     return (
-            <a className={`link-container ${linkInfo.highlighted == true ? "highlight":"not-highlighted"}`} href="#">
+            <Link onClick={()=>{
+                setSideBarLinksArray(links.map(link=>{
+                    if(link.highlighted){
+                        return {...link, highlighted: false}
+                    }
+                    if(link.text == linkInfo.text){
+                        return {...link, highlighted: true}
+                    }
+                    return link
+                }))
+            }} className={`link-container ${linkInfo.highlighted == true ? "highlight":"not-highlighted"}`} to={linkInfo.route}>
                 <linkInfo.Icon />
                 <p>{linkInfo.text}</p>
-            </a>
+            </Link>
     )
 }
 

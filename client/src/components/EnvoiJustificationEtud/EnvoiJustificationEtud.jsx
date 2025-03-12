@@ -10,10 +10,9 @@ import WatchIcon from '@mui/icons-material/Watch';
 function EnvoiJustificationEtud({username, links}) {
   return (
     <>
-    <Sidebar userinfo={{username: "Ahmed Bel Haj Amor"}} links={[{text: "Taux de presence", Icon: QueryStatsIcon, highlighted: false}, {text: "Justifications vérifiées", Icon: CheckCircleRoundedIcon, highlighted: true}]}/>
     <section className='page-section justification-section'>
-      <div className='logout' style={{display: "flex", width: '100%', justifyContent:'end', marginBottom: "47px"}}>
-        <Button>Se Deconnecter</Button>
+      <div style={{display: "flex", width: '100%', justifyContent:'end', marginBottom: "47px"}}>
+        <Button>log out</Button>
       </div>
 
       <section className='marquer-absence'>

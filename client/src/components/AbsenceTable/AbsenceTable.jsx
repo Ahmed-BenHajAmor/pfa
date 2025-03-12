@@ -1,4 +1,5 @@
 import React from 'react';
+import './AbsenceTable.css'
 
 const AbsenceTable = () => {
   // Table data
@@ -9,43 +10,30 @@ const AbsenceTable = () => {
     { matiere: 'Math', etat: 'Proche du seuil (2/3)' },
   ];
 
+  const getStatusClass = (etat) => {
+    if (etat.includes('Éliminé')) return 'eliminated';
+    if (etat.includes('Absence partielle')) return 'partial';
+    if (etat.includes('Aucune absence')) return 'none';
+    if (etat.includes('Proche du seuil')) return 'near-threshold';
+    return '';
+  };
   return (
-    <div style={{ margin: '20px' }}>
-      <h2>Tableau des Absences</h2>
-      <table style={{ width: '100%', borderCollapse: 'collapse', border: '1px solid #ddd' }}>
-        <thead>
-          <tr style={{ backgroundColor: '#f2f2f2' }}>
-            <th style={{ padding: '12px', border: '1px solid #ddd', textAlign: 'left' }}>Matière</th>
-            <th style={{ padding: '12px', border: '1px solid #ddd', textAlign: 'left' }}>État</th>
+    <table className="attendance-table">
+      <thead>
+        <tr>
+          <th>Matière</th>
+          <th>État</th>
+        </tr>
+      </thead>
+      <tbody>
+        {tableData.map((row, index) => (
+          <tr key={index} className={index % 2 === 0 ? 'even' : 'odd'}>
+            <td>{row.matiere}</td>
+            <td className={`status ${getStatusClass(row.etat)}`}>{row.etat}</td>
           </tr>
-        </thead>
-        <tbody>
-          {tableData.map((row, index) => {
-            // Définir la couleur de fond en fonction de l'état
-            let backgroundColor = 'transparent';
-            if (row.etat === 'Éliminé pour absence (3/3)') {
-              backgroundColor = '#FF6B6B'; // Rouge clair
-            } else if (row.etat === 'Proche du seuil (2/3)') {
-              backgroundColor = '#9F6411'; // Couleur spécifique pour "Proche du seuil"
-            }
-
-            return (
-              <tr
-                key={index}
-                style={{
-                  border: '1px solid #ddd',
-                  backgroundColor: backgroundColor, // Appliquer la couleur de fond
-                  color: backgroundColor !== 'transparent' ? 'black' : '#000', // Changer la couleur du texte si nécessaire
-                }}
-              >
-                <td style={{ padding: '12px', border: '1px solid #ddd' }}>{row.matiere}</td>
-                <td style={{ padding: '12px', border: '1px solid #ddd' }}>{row.etat}</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-    </div>
+        ))}
+      </tbody>
+    </table>
   );
 };
 
