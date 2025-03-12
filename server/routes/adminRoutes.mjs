@@ -1,14 +1,15 @@
 import express from 'express';
 import pool from '../db_connection/db.mjs';
+import verifyToken from '../utils/midelwares/verifyToken.mjs';
 
 const adminRoute = express.Router();
 
-adminRoute.get('/', async (req, res) => {
+adminRoute.get('/', verifyToken,async (req, res) => {
+  console.log(req.user.id);
+  
   try {
-    console.log("in");
     
     const [rows] = await pool.query('SELECT * FROM justification');
-    console.log(rows);
     
     res.json(rows);
   } catch (error) {
