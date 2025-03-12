@@ -1,5 +1,6 @@
 import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import './JustificationImpactChart.css'
 
 const JustificationImpactChart = () => {
   const data = [
@@ -8,17 +9,17 @@ const JustificationImpactChart = () => {
   ];
 
   return (
-    <div style={{ width: '100%', maxWidth: '400px', margin: '0 auto' }}>
-      <h3 style={{ textAlign: 'center', color: '#666' }}>Statistique</h3>
-      <h2 style={{ textAlign: 'center', color: '#444' }}>Impact des Justifications</h2>
+    <div style={{ width: '100%', margin: '0 auto'}}>
+      <h2 style={{ color: "grey", fontWeight: "500" }}>Statistique</h2>
+      <h1 style={{fontSize:'30px'}}>Impact des Justifications</h1>
+      <hr style={{ marginTop: "5%", marginBottom: "3%" }} />
       <BarChart
-        width={400}
+        style={{width:'100%'}}
+        width={600}
         height={300}
         data={data}
         margin={{
           top: 20,
-          right: 30,
-          left: 20,
           bottom: 5,
         }}
       >
@@ -32,12 +33,14 @@ const JustificationImpactChart = () => {
         <Tooltip />
         <Legend />
         <Bar 
+        
           dataKey="value" 
           fill="#8884d8" 
-          barSize={30}
+          barSize={60}
         >
           {data.map((entry, index) => (
             <rect
+            
               key={`cell-${index}`}
               fill={index === 0 ? '#8884d8' : '#d3d3d3'} 
               stroke="#fff"

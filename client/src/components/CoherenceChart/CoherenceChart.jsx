@@ -12,42 +12,38 @@ const data = [
 
 const CoherenceChart = () => {
   return (
-    <div style={{ fontFamily: 'Arial, sans-serif' ,position:'relative'}}>
+    <div style={{ fontFamily: 'Arial, sans-serif' ,position:'relative',width:'100%'}}>
       {/* Title and Subtitle */}
       <h2 style={{ color: "grey", fontWeight: "500" }}>Cohérence</h2>
       
       <p style={{ color: 'black',fontSize:'30px',fontWeight:'bold'}}>11% <span style={{color:'red'}}>▼</span></p>
-      <div style={{width:'30%',height:'5vh',position: "absolute",top: "7%",right: "0%"}}>
-        <table>
-          <tr> 
-            <td>     <div style={{width: "12px",
+      <div style={{display:'flex',flexWrap:'wrap',width:'40%',position: "absolute",top: "7%",right: "-2%"}}>
+          <div style={{width: "12px",
                       height: "12px",
                       marginBottom:'10px',
                       backgroundColor:'#ff69b4',
-                      borderRadius: "50%"}}>
-                      </div>
-            </td>
-            <td>
-              <p>Ce mois-ci</p>
-            </td>
-          </tr>
-          <tr> 
-            <td >     <div style={{width: "12px",
-                      height: "12px",
-                      marginBottom:'10px',
-                      backgroundColor:'#8884d8',
-                      borderRadius: "50%"}}>
-                      </div>
-            </td>
-            <td>
-              <p>Le mois dernier</p>
-            </td>
-          </tr>
-        </table>
+                      borderRadius: "50%",
+                      marginRight:"3%",
+                      marginTop:"1%"}}>
+          </div>
+        <p>Ce mois-ci</p>
+          <div style={{width: "12px",
+                        height: "12px",
+                        marginBottom:'10px',
+                        backgroundColor:'#8884d8',
+                        borderRadius: "50%",
+                        marginRight:"3%",
+                        marginLeft:"3%",
+                        marginTop:"1%"
+                        }}>
+          </div>
+          <p>Le mois dernier</p>
       </div>
       <hr style={{ marginTop: "5%", marginBottom: "3%" }} />
       {/* Line Chart */}
       <LineChart
+      style={{width:'100%'}}
+      
         width={600}
         height={300}
         data={data}
