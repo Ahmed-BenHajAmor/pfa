@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './JustificationsTable.css'
 import { Title } from '../Title'
-import { AdminApiCalls } from '../../apiCalls.js/admin'
+import { AdminApiCalls } from '../../apiCalls/admin'
 import { data } from 'react-router'
 
 function JustificationsTable({setPopupInfo}) {

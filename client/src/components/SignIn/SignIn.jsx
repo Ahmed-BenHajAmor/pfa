@@ -1,8 +1,21 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import './SignIn.css'
 import { Title } from '../Title'
+import { SigninApiCalls } from '../../apiCalls/signinApi';
+import { useNavigate } from 'react-router-dom';
+import { Context } from '../../App';
 
 function SignIn() {
+  
+  const navigate = useNavigate();
+  const [validCredentials, setValidCredentials] = useState(true)
+  const {setUser} = useContext(Context)
+  const handelSignin = (e)=>{
+
+    e.preventDefault();
+    SigninApiCalls.signin(e.target.email.value, e.target.password.value, navigate, setValidCredentials, setUser)
+    
+  }
   return (
     <section className="sign-in">
         <HeaderBar />
@@ -11,18 +24,22 @@ function SignIn() {
 
         <div className="signin-container">
       <h2 className="signin-title">Connexion à votre espace</h2>
-      <form>
+      {!validCredentials && <p className='error'>vérifier les informations d'identification</p>}
+      <form onSubmit={handelSignin}>
         <input
           type="email"
+          name="email"
           placeholder="Entrez votre e-mail universitaire"
           className="signin-input"
         />
+        
         <input
           type="password"
+          name="password"
           placeholder="Entrez votre mot de passe"
           className="signin-input"
         />
-        <button type="button" className="signin-button">
+        <button type="submit" className="signin-button">
           Se connecter
         </button>
       </form>

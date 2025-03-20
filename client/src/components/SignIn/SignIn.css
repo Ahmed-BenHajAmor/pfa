@@ -34,9 +34,13 @@
     font-size: 24px;
     font-weight: 600;
     color: #667085;
-    margin-bottom: 51px;
+    margin-bottom: 20px;
 }
-
+.error{
+    font-size: 15px;
+    color: red;
+    margin-bottom: 20px;
+}
 .signin-input {
 width: 100%;
 padding: 12px;

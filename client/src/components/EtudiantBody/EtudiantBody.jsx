@@ -4,12 +4,13 @@ import { MyGraph } from '../MyGraph'
 import { CoherenceChart } from '../CoherenceChart'
 import { JustificationImpactChart } from '../JustificationImpactChart'
 import { Button } from '../Button'
+import { SigninApiCalls } from '../../apiCalls/signinApi'
 
 function EtudiantBody() {
   return (
     <section className='page-section etudiant'>
         <div style={{display: "flex", width: '100%', justifyContent:'end', marginBottom: "47px"}}>
-          <Button>Log out</Button>
+          <Button onClick={SigninApiCalls.logout()}>Log out</Button>
         </div>
         <div className='etudiant-stats ' style={{display: "flex" ,flexWrap:'wrap'}}>
           <div style={{flexBasis:'200', flexGrow:'1' ,boxShadow:'0px 2px 6px 0px rgb(211, 211, 214)',borderRadius:'20px',padding:'32px'}}><MyGraph/></div>

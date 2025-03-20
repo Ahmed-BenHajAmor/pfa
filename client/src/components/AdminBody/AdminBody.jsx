@@ -15,7 +15,7 @@ function AdminBody() {
     <section className="page-section admin">
           {popupInfo.show && <JustificationPopup popupInfo={popupInfo} setPopupInfo={setPopupInfo}/>}
           <div style={{display: "flex", width: '100%', justifyContent:'end', marginBottom: "47px"}}>
-            <Button>Log out</Button>
+            <Button onClick={SigninApiCalls.logout()}>Log out</Button>
           </div>
 
           <Title title={{text: "Justifications en attente", font: 36}} subTitle={"Justifications envoyées (non vérifiées)"}/>
