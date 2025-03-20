@@ -11,8 +11,6 @@ const currentDate = new Date();
 function Emploi() {
   const [showPopup, setShowPopup] = useState(false);
   const handleEventClick = (info) => {
-    console.log(info);
-    
     setShowPopup(true)
   };
   const events = [

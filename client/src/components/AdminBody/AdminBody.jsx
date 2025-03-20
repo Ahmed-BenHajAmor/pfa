@@ -5,8 +5,10 @@ import { Title } from '../Title'
 import { JustificationsTable } from '../JustificationsTable'
 import SearchIcon from '@mui/icons-material/Search';
 import { JustificationPopup } from '../JustificationPopup';
+import { useNavigate } from 'react-router';
 
 function AdminBody() {
+  const navigate = useNavigate()
   const [popupInfo, setPopupInfo] = useState({show: false, 
     data:{}
   })
@@ -15,7 +17,7 @@ function AdminBody() {
     <section className="page-section admin">
           {popupInfo.show && <JustificationPopup popupInfo={popupInfo} setPopupInfo={setPopupInfo}/>}
           <div style={{display: "flex", width: '100%', justifyContent:'end', marginBottom: "47px"}}>
-            <Button onClick={SigninApiCalls.logout()}>Log out</Button>
+            <Button>Log out</Button>
           </div>
 
           <Title title={{text: "Justifications en attente", font: 36}} subTitle={"Justifications envoyées (non vérifiées)"}/>

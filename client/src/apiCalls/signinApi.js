@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { useNavigate } from 'react-router';
 
 export class SigninApiCalls {
     static signin(email, password, navigate, setValidCredentials, setUser){
@@ -25,8 +24,8 @@ export class SigninApiCalls {
         })
     }
 
-    static logout(){
-        const navigate = useNavigate()
+    static logout(navigate){
+        
         localStorage.removeItem('token')
         navigate('/signin')
     }

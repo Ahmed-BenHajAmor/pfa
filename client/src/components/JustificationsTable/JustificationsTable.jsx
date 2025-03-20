@@ -56,4 +56,4 @@ function JustificationsTable({setPopupInfo}) {
   )
 }
 
-export default JustificationsTable
+export default JustificationsTable;

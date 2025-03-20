@@ -2,7 +2,7 @@ import React from 'react'
 import './EnvoiJustificationEtud.css'
 import QueryStatsIcon from '@mui/icons-material/QueryStats';
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
-import { Button, Sidebar } from '..';
+import { Button } from '..';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import DateRangeIcon from '@mui/icons-material/DateRange';
 import WatchIcon from '@mui/icons-material/Watch';
