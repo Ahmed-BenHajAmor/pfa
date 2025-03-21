@@ -93,4 +93,5 @@ background: #939393;
     width: fit-content;
     display: flex;
     align-self: end;
+    margin-right: 50px;
 }

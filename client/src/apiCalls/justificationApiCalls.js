@@ -1,28 +1,32 @@
 import axios from 'axios';
 
 export class JustificationApiCalls {
-    static sendJustification(justifData) {
+    static sendJustification(justifData, setShowMsg, setFile, e) {
+        
         const token = localStorage.getItem('token');
         const formData = new FormData();
-        justifData.keys.forEach(key=>{
-            formData.append(key, justifData[key]);
-        })
-        formData.append('date_et_heure_de_debut', new Date()); 
-        formData.append('date_et_heure_de_fin', new Date());   
-        formData.append('id_enseignant', 2);        
-        formData.append('motif', 'hh');        
-        formData.append('file', file);               
+      
+        formData.append('date_et_heure_de_debut', justifData.date_et_heure_de_debut); 
+        formData.append('date_et_heure_de_fin', justifData.date_et_heure_de_fin);   
+        formData.append('id_enseignant', justifData.id_enseignant);        
+        formData.append('motif', justifData.motif);        
+        formData.append('file', justifData.file);               
 
         return axios.post('http://localhost:3000/justifications', formData, {
             headers: {
-                "Content-Type": "multipart/form-data", // Required for file uploads
+                "Content-Type": "multipart/form-data", 
                 "Authorization": `Bearer ${token}`  
             },
             withCredentials: true
         })
         .then(res => {
-            console.log(res);
-            return res.data; // Return the response data if needed
+            setShowMsg(obj=> {
+            return {missingField: false, justifSent: true}
+            })
+            setFile(null)
+            e.target.reset()
+            
+            return res.data; 
         })
         .catch(err => {
             console.log(err);

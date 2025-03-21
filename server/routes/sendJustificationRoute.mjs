@@ -15,17 +15,18 @@ const formatDate = (date)=>{
     return date.toISOString().slice(0, 19).replace('T', ' ');
 }
 
-sendJustificationRoute.post('/justifications', verifyToken, upload.single('file'), async (req, res)=>{
+sendJustificationRoute.post('/justifications', upload.single('file'),verifyToken, async (req, res)=>{
     
     const {file} = req
     const {date_et_heure_de_debut, date_et_heure_de_fin, id_enseignant , id_etudiant, motif} = req.body
+    
     if(!(date_et_heure_de_debut && date_et_heure_de_fin && (id_enseignant  || id_etudiant) && motif && file))
         return res.sendStatus(400);
     try{
 
         const filePath = file.path;
         const fileData = fs.readFileSync(filePath);
-     
+        
         
         await pool.query('INSERT INTO justification VALUE (?,?,?,?,?,?,?,?,?)', [v4(), motif, formatDate(new Date()), formatDate(new Date(date_et_heure_de_debut)), formatDate(new Date(date_et_heure_de_fin)), fileData,id_enseignant, id_etudiant, null])
         fs.unlinkSync(filePath);
