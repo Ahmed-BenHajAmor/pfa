@@ -1,10 +1,12 @@
 import axios from 'axios';
 
 export class JustificationApiCalls {
-    static sendJustification(file) {
+    static sendJustification(justifData) {
         const token = localStorage.getItem('token');
         const formData = new FormData();
-        
+        justifData.keys.forEach(key=>{
+            formData.append(key, justifData[key]);
+        })
         formData.append('date_et_heure_de_debut', new Date()); 
         formData.append('date_et_heure_de_fin', new Date());   
         formData.append('id_enseignant', 2);        

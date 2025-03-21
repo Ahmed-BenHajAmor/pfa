@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useState } from 'react'
 import './EnvoiJustificationEtud.css'
 import QueryStatsIcon from '@mui/icons-material/QueryStats';
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
@@ -9,6 +9,7 @@ import WatchIcon from '@mui/icons-material/Watch';
 import { useDropzone } from 'react-dropzone';
 import { JustificationApiCalls } from '../../apiCalls/justificationApiCalls';
 function EnvoiJustificationEtud({username, links}) {
+  const [file,setFile] = useState()
   return (
     <>
     <section className='page-section justification-section'>
@@ -37,18 +38,14 @@ function EnvoiJustificationEtud({username, links}) {
           </div>
 
         </section>
-        <FileDropZone />
+        <FileDropZone setFile={setFile}/>
       </section>
       
-      <section className='envoyer-button'>
       
-        <div></div>
+      <button className='button-justification' type="submit" >Envoyer</button>
+    
       
-        <div>
-          <input className='button' type="button" value='Envoyer' name="" id="" />
-        </div>
-      
-      </section>
+
 
     </section>
 
@@ -64,11 +61,9 @@ function Input({text}){
   )
 }
 
-function FileDropZone() {
+function FileDropZone(setFile) {
   const onDrop = useCallback((acceptedFiles) => {
-    console.log(acceptedFiles);
-    
-    JustificationApiCalls.sendJustification(acceptedFiles[0])
+    setFile(acceptedFiles[0])
   }, []);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
