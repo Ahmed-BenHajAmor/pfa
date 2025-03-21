@@ -7,6 +7,7 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import DateRangeIcon from '@mui/icons-material/DateRange';
 import WatchIcon from '@mui/icons-material/Watch';
 import { useDropzone } from 'react-dropzone';
+import { JustificationApiCalls } from '../../apiCalls/justificationApiCalls';
 function EnvoiJustificationEtud({username, links}) {
   return (
     <>
@@ -66,6 +67,8 @@ function Input({text}){
 function FileDropZone() {
   const onDrop = useCallback((acceptedFiles) => {
     console.log(acceptedFiles);
+    
+    JustificationApiCalls.sendJustification(acceptedFiles)
   }, []);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
