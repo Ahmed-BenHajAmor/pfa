@@ -8,7 +8,6 @@ import { JustificationPopup } from '../JustificationPopup';
 import { useNavigate } from 'react-router';
 
 function AdminBody() {
-  const navigate = useNavigate()
   const [popupInfo, setPopupInfo] = useState({show: false, 
     data:{}
   })
@@ -27,7 +26,7 @@ function AdminBody() {
           
           
           
-          <JustificationsTable setPopupInfo={setPopupInfo} />
+          <JustificationsTable popupInfo={popupInfo} setPopupInfo={setPopupInfo} />
           
          
 

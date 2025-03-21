@@ -74,6 +74,7 @@ background: #939393;
     background-color: #e0e0e0;
     width: 336px;
     height: 100%;
+    gap: 10px;
 }
 
 .envoyer-button{

@@ -39,10 +39,10 @@ function EnvoiJustificationEtud({username, links}) {
 
         <section className='justification-ajout'>
 
-          <div>
+          
             <AddCircleOutlineIcon></AddCircleOutlineIcon>
             <label htmlFor="">Ajouter une preuve</label>
-          </div>
+          
         </section>
       </section>
 

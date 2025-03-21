@@ -1,7 +1,7 @@
 
 import axios from "axios";
 export class UsersApiCalls{
-    static getUser(setUser){
+    static getUser(setUser, navigate){
         const token = localStorage.getItem('token');
         
         axios.get('http://localhost:3000/user', {
@@ -17,7 +17,8 @@ export class UsersApiCalls{
         
         })
         .catch(err => {
-        console.error('Erreur Axios:', err)
+            console.error('Erreur Axios:', err)
+            navigate("/signin")
         });
         
 

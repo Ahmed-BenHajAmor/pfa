@@ -5,6 +5,7 @@ import verifyToken from '../utils/midelwares/verifyToken.mjs';
 const usersRoutes = express.Router();
 
 usersRoutes.get('/user', verifyToken, async (req, res) => {
+    
     const {id: userId, email: userEmail} = req.user;
     
     try {

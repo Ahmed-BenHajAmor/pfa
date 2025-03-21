@@ -2,11 +2,9 @@ import axios from 'axios';
 
 export class AdminApiCalls {
   static getJustifications(setJustifiications) {
-    const token = localStorage.getItem('token');
     axios.get('http://localhost:3000/justifications', {
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`  
       },
       withCredentials: true  
     })
@@ -19,5 +17,20 @@ export class AdminApiCalls {
     });
     
 
+  }
+
+  static handelJustificationVerification(id_justification, state, setPopUpInfo){
+    axios.patch("http://localhost:3000/justifications/change-state", JSON.stringify({id_justification, state}),{
+      headers: {
+        "Content-Type": "application/json",
+      },
+      withCredentials: true
+    }).then((res)=>{
+      console.log(res);
+      setPopUpInfo(info => {return {...info, show: !info.show}})
+    }).catch(err=>{
+      console.log(err);
+    })
+    
   }
 }

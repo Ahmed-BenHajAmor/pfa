@@ -30,10 +30,19 @@ const RoutesContainer = ()=>{
   const [user, setUser] = useState({})
   const navigate = useNavigate()
   useEffect(()=>{
+    console.log(localStorage.getItem('token'));
+    
     if(localStorage.getItem('token')){
-
-      
-      UsersApiCalls.getUser(setUser)
+      if(localStorage.getItem('token') === "admin"){
+        
+        
+        setUser({
+          nom: "Admin",
+          prenom: "Admin",
+          statut: "Admin"
+        })
+      }else
+        UsersApiCalls.getUser(setUser, navigate)
     }
     else
       navigate('/signin')
