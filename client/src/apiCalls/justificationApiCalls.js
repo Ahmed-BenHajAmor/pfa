@@ -8,7 +8,6 @@ export class JustificationApiCalls {
         formData.append('date_et_heure_de_debut', new Date()); 
         formData.append('date_et_heure_de_fin', new Date());   
         formData.append('id_enseignant', 2);        
-        formData.append('id_etudiant', null);          
         formData.append('motif', 'hh');        
         formData.append('file', file);               
 
@@ -25,7 +24,6 @@ export class JustificationApiCalls {
         })
         .catch(err => {
             console.log(err);
-            throw err; // Re-throw the error for handling upstream
         });
     }
 }

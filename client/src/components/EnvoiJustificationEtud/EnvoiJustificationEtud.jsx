@@ -68,7 +68,7 @@ function FileDropZone() {
   const onDrop = useCallback((acceptedFiles) => {
     console.log(acceptedFiles);
     
-    JustificationApiCalls.sendJustification(acceptedFiles)
+    JustificationApiCalls.sendJustification(acceptedFiles[0])
   }, []);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
