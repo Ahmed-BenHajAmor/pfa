@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import './EnvoiJustificationEtud.css'
 import QueryStatsIcon from '@mui/icons-material/QueryStats';
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
@@ -6,7 +6,7 @@ import { Button } from '..';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import DateRangeIcon from '@mui/icons-material/DateRange';
 import WatchIcon from '@mui/icons-material/Watch';
-
+import { useDropzone } from 'react-dropzone';
 function EnvoiJustificationEtud({username, links}) {
   return (
     <>
@@ -36,16 +36,9 @@ function EnvoiJustificationEtud({username, links}) {
           </div>
 
         </section>
-
-        <section className='justification-ajout'>
-
-          
-            <AddCircleOutlineIcon></AddCircleOutlineIcon>
-            <label htmlFor="">Ajouter une preuve</label>
-          
-        </section>
+        <FileDropZone />
       </section>
-
+      
       <section className='envoyer-button'>
       
         <div></div>
@@ -70,4 +63,26 @@ function Input({text}){
   )
 }
 
+function FileDropZone() {
+  const onDrop = useCallback((acceptedFiles) => {
+    console.log(acceptedFiles);
+  }, []);
+
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+
+  return (
+    <div {...getRootProps()} className="dropzone">
+      <input {...getInputProps()} />
+      <section className='justification-ajout'>
+        <AddCircleOutlineIcon></AddCircleOutlineIcon>
+        <label htmlFor="">
+        {isDragActive ? (
+          "déposer le fichier"
+        ) : "Ajouter la piece jointe"}
+        </label>
+      </section>
+      
+    </div>
+  );
+}
 export default EnvoiJustificationEtud;
