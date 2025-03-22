@@ -40,7 +40,6 @@ function EnvoiJustificationEtud({username, links}) {
       
       
       
-      console.log("iny");
       
     }}>
 

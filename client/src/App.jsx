@@ -28,9 +28,9 @@ function App() {
 
 const RoutesContainer = ()=>{
   const [user, setUser] = useState({})
+  
   const navigate = useNavigate()
   useEffect(()=>{
-    console.log(localStorage.getItem('token'));
     
     if(localStorage.getItem('token')){
       if(localStorage.getItem('token') === "admin"){

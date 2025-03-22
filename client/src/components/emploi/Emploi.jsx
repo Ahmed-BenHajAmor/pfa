@@ -1,4 +1,4 @@
-// client/src/Emploi.js
+
 import React, { useState, useEffect } from "react";
 import FullCalendar from "@fullcalendar/react";
 import timeGridPlugin from "@fullcalendar/timegrid";
@@ -6,29 +6,30 @@ import interactionPlugin from "@fullcalendar/interaction";
 import "./Emploi.css";
 import frLocale from "@fullcalendar/core/locales/fr";
 import { EtudiantPopup } from "../EtudiantPopup";
-import {seanceApiCalls}  from "D:/lcs 2/PFA/client/src/apiCalls.js/seanceApi.js"; // Importez la fonction
+import { EnseignantApi } from "../../apiCalls/enseignantApi";
 
-function Emploi() {
+function Emploi({emploiData}) {
+  
   const [showPopup, setShowPopup] = useState(false);
-  const [events, setEvents] = useState([]);
-  const [selectedEvent, setSelectedEvent] = useState(null);
+  const events = emploiData.map(el=>{
+    return {
+      extendedProps: {
+        id_section: el.id_section
+      },
+      title: el.nom,
+      daysOfWeek: [el.jour], 
+      startTime: el.heure_session,
+      duration: "01:30"
+    }
+  })
+  
+  const [studentList, setStudentList] = useState([]);
 
-  useEffect(() => {
-    const fetchSeances = async () => {
-      try {
-        const data = await seanceApiCalls.getSeances(); // Utilisez la fonction centralisée
-        console.log('Données reçues:', data);
-        setEvents(data);
-      } catch (error) {
-        console.error('Erreur lors du chargement des séances:', error);
-      }
-    };
-    fetchSeances();
-  }, []);
 
   const handleEventClick = (info) => {
-    setSelectedEvent(info.event);
+    
     setShowPopup(true);
+    EnseignantApi.getStudentsFromSection(info.event.extendedProps.id_section, setStudentList)
   };
 
   return (
@@ -57,10 +58,9 @@ function Emploi() {
       />
       {showPopup && (
         <EtudiantPopup
-          event={selectedEvent}
+          studentList={studentList}
           onClose={() => {
             setShowPopup(false);
-            setSelectedEvent(null);
           }}
         />
       )}

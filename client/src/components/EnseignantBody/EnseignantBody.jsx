@@ -1,13 +1,19 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
 import { Button } from '../Button'
 import { Emploi } from '../Emploi'
 import { Title } from '../Title'
-import { SigninApiCalls } from '../../apiCalls/signinApi'
 import { useNavigate } from 'react-router'
+import { Context } from '../../App'
+import { EnseignantApi } from '../../apiCalls/enseignantApi'
 
 function EnseignantBody() {
-  const navigate = useNavigate()
+  const [emploiData, setEmploiData] = useState([])
+  const {user} = useContext(Context)
+  useEffect(()=>{
+    EnseignantApi.getSessions(user.id, setEmploiData)
+  }, [])
+  
   return (
     <section className="page-section enseignant-section">
 
@@ -15,7 +21,7 @@ function EnseignantBody() {
           <Button>Log out</Button>
     </div>
     <Title title={{text: "Votre emploi de temps", font: 36}} subTitle={"Gerer vos séances"}/>
-    <section className='emploi-de-temps'> <Emploi  /></section>
+    <section className='emploi-de-temps'> <Emploi emploiData={emploiData} /></section>
     </section>
   )
 }

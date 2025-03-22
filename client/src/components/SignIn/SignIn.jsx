@@ -36,6 +36,7 @@ function SignIn() {
         <input
           type="password"
           name="password"
+          
           placeholder="Entrez votre mot de passe"
           className="signin-input"
         />

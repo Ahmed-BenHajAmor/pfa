@@ -23,7 +23,23 @@ usersRoutes.get('/user', verifyToken, async (req, res) => {
 
         res.json({...rows[0], statut});
     } catch (error) {
-    res.status(500).json({ error: 'Internal server error.' });
+        res.status(500).json({ error: 'Internal server error.' });
+    }
+})
+
+
+usersRoutes.get('/user/list-student', verifyToken, async (req, res)=>{
+    const {id_section} = req.query
+    console.log(id_section);
+    
+    if(!id_section){
+        return res.sendStatus(500)
+    }
+    try{
+        const [rows] = await pool.query('SELECT nom, prenom, id FROM etudiant WHERE id_section = ?', [id_section]);
+        res.status(200).json(rows)
+    }catch(err){
+        res.status(500).json({ error: 'Internal server error.' });
     }
 })
 
