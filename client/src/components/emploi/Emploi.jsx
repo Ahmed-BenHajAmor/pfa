@@ -1,70 +1,71 @@
-import React, { useState } from "react";
+// client/src/Emploi.js
+import React, { useState, useEffect } from "react";
 import FullCalendar from "@fullcalendar/react";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
-import "./Emploi.css"; 
+import "./Emploi.css";
 import frLocale from "@fullcalendar/core/locales/fr";
-import {EtudiantPopup} from "../EtudiantPopup"; // Import your popup component
+import { EtudiantPopup } from "../EtudiantPopup";
+import {seanceApiCalls}  from "D:/lcs 2/PFA/client/src/apiCalls.js/seanceApi.js"; // Importez la fonction
 
-
-const currentDate = new Date(); 
 function Emploi() {
   const [showPopup, setShowPopup] = useState(false);
-  const handleEventClick = (info) => {
-    console.log(info);
-    
-    setShowPopup(true)
-  };
-  const events = [
-    {
-      title: "GLSI",
-      daysOfWeek: [1], // Monday
-      startTime: "10:45:00",
-      endTime: "12:00:00",
+  const [events, setEvents] = useState([]);
+  const [selectedEvent, setSelectedEvent] = useState(null);
 
-      
-    },
-    {
-      title: "Maths",
-      daysOfWeek: [3], // Wednesday
-      startTime: "13:00:00",
-      endTime: "14:30:00",
-     
-    },
-  ];
-
-      return (
-        <div className="emploi-container">
-          <FullCalendar
-            plugins={[timeGridPlugin, interactionPlugin]}
-            initialView="timeGridWeek" // Shows a weekly timetable
-            locale={frLocale}
-            slotLabelInterval="01:30:00"
-            allDaySlot={false}
-            initialDate={currentDate}
-            hiddenDays={[0]} // Pour enlever le Dimanche
-            headerToolbar={{
-              left: "prev today",
-              center: "title",
-              right: "", }}
-
-            buttonText={{
-              today: 'Cette semaine'}}
-
-            slotMinTime="08:30:00"
-            slotMaxTime="17:35:00"
-            slotDuration="00:30:00"
-            height='auto'
-            aspectRatio={1.5}
-            events={events}
-            eventClick={handleEventClick}
-            />
-            {showPopup && (
-              <EtudiantPopup  onClose={() => setShowPopup(false)}
-              />
-            )}
-          </div>
-        );
+  useEffect(() => {
+    const fetchSeances = async () => {
+      try {
+        const data = await seanceApiCalls.getSeances(); // Utilisez la fonction centralisée
+        console.log('Données reçues:', data);
+        setEvents(data);
+      } catch (error) {
+        console.error('Erreur lors du chargement des séances:', error);
       }
+    };
+    fetchSeances();
+  }, []);
+
+  const handleEventClick = (info) => {
+    setSelectedEvent(info.event);
+    setShowPopup(true);
+  };
+
+  return (
+    <div className="emploi-container">
+      <FullCalendar
+        plugins={[timeGridPlugin, interactionPlugin]}
+        initialView="timeGridWeek"
+        locale={frLocale}
+        slotLabelInterval="01:30:00"
+        allDaySlot={false}
+        initialDate="2025-03-24"
+        hiddenDays={[0]}
+        headerToolbar={{
+          left: "prev today",
+          center: "title",
+          right: "",
+        }}
+        buttonText={{ today: 'Cette semaine' }}
+        slotMinTime="08:00:00"
+        slotMaxTime="18:00:00"
+        slotDuration="00:30:00"
+        height='auto'
+        aspectRatio={1.5}
+        events={events}
+        eventClick={handleEventClick}
+      />
+      {showPopup && (
+        <EtudiantPopup
+          event={selectedEvent}
+          onClose={() => {
+            setShowPopup(false);
+            setSelectedEvent(null);
+          }}
+        />
+      )}
+    </div>
+  );
+}
 
 export default Emploi;
