@@ -1,34 +1,23 @@
-export class AdminApiCalls{
-    static getJustifications(){
-        
+import axios from 'axios';
+
+export class AdminApiCalls {
+  static getJustifications(setJustifiications) {
+    // const token = localStorage.getItem('token'); 
+    axios.get('http://localhost:3000/justifications', {
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzQyNDU2NzU1LCJleHAiOjE3NDI0NjAzNTV9.c-F0F6ljXPmgqL6ee8fxHBXA2wlfrN675NintjnjL7o`  
+      },
+      withCredentials: true  
+    })
+    .then(response => {
+      setJustifiications(response.data || [])
       
-      return [
-            {
-              _id: 1,
-              cin: "12345678",
-              name: "Ahmed Ben Haj Amor",
-              section: "GLSI",
-              status: 'etudiant',
-              motif: "Rendez-vous important",
-              group: 3,
-              submissionDate: "12 Mars 2024, 08:00",
-              startDateTime: "12 Mars 2024, 08:00",
-              endDateTime: "13 Mars 2024, 12:00",
-              attachments: "Télécharger"
-            },
-            {
-              _id: 2,
-              cin: "12345678",
-              name: "Ahmed Ben Haj Amor",
-              section: "GLSI",
-              status: 'professor',
-              motif: "Rendez-vous important",
-              group: 3,
-              submissionDate: "12 Mars 2024, 08:00",
-              startDateTime: "12 Mars 2024, 08:00",
-              endDateTime: "13 Mars 2024, 12:00",
-              attachments: "Télécharger"
-            }
-          ]
-    }
+    })
+    .catch(err => {
+      console.error('Erreur Axios:', err)
+    });
+    
+
+  }
 }

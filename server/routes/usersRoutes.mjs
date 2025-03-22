@@ -6,7 +6,6 @@ const usersRoutes = express.Router();
 
 usersRoutes.get('/user', verifyToken, async (req, res) => {
     const userId = req.user.id;
-    console.log(userId);
     
     try {
         const [rows] = await pool.query('SELECT * FROM etudiant WHERE id = ?', [userId]);

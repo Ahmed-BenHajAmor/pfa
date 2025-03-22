@@ -2,7 +2,6 @@ import jwt from 'jsonwebtoken';
 
 const verifyToken = (req, res, next) => {
     const token = req.header('Authorization')?.split(' ')[1]; 
-    console.log(token);
     
     if (!token) {
         return res.status(401).json({ error: 'Access denied. No token provided.' });
@@ -10,7 +9,6 @@ const verifyToken = (req, res, next) => {
 
     try {
         const decoded = jwt.verify(token, '123'); 
-        console.log(decoded);
                 
         req.user = decoded; 
         next();

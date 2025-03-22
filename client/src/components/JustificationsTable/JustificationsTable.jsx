@@ -2,14 +2,19 @@ import React, { useEffect, useState } from 'react'
 import './JustificationsTable.css'
 import { Title } from '../Title'
 import { AdminApiCalls } from '../../apiCalls.js/admin'
+import { data } from 'react-router'
 
 function JustificationsTable({setPopupInfo}) {
   const tableHead = ["CIN", "Nom", "Statut", "Motif", "details"]
   const [justificationsArray, setJustificationsArray] = useState([])
   useEffect(()=>{
-    setJustificationsArray(AdminApiCalls.getJustifications())
-  }, [])
+   
+    AdminApiCalls.getJustifications(setJustificationsArray);
 
+ 
+  }, [])
+  
+  
   if(justificationsArray.length == 0){
     return <div className="empty-justifications-container justifications-container">
     <Title title={{text: "Aucune justification en attente de vérification n'a été trouvée.", font: 24}} subTitle={"Il n'existe aucun justificatif en attente de vérification."}/>
@@ -29,11 +34,12 @@ function JustificationsTable({setPopupInfo}) {
         </thead>
         <tbody>
             {justificationsArray.map(justif=>{
+                
                 return (
-                    <tr key={justif._id} className={justif.status.toLowerCase() == "etudiant" ? 'student-row' : 'professor-row'}>
+                    <tr key={justif.id_justif} className={justif.id_enseignant == null ? 'student-row' : 'professor-row'}>
                         <td>{justif.cin}</td>
-                        <td>{justif.name}</td>
-                        <td>{justif.status}</td>
+                        <td>{justif.nom}</td>
+                        <td>{justif.id_etudiant ? 'Etudiant' : 'Enseignant'}</td>
                         <td>{justif.motif}</td>
                         <td> <p onClick={()=>{
                             const {_id, ...data} = justif

@@ -51,6 +51,8 @@ width: 175px;
     min-width: 614px;
     table-layout: fixed;
     box-shadow: 1px 1px 15px #424242;
+    height: 644px;
+    overflow-y: auto;
 }
 
 .justification-popup > table{
@@ -58,7 +60,10 @@ width: 175px;
     width: 100%;
     border-spacing: 22px;
     color: #424242;
+    
 }
+
+
 
 
 

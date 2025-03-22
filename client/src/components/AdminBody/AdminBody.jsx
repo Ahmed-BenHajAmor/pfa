@@ -10,6 +10,7 @@ function AdminBody() {
   const [popupInfo, setPopupInfo] = useState({show: false, 
     data:{}
   })
+  
   return (
     <section className="page-section admin">
           {popupInfo.show && <JustificationPopup popupInfo={popupInfo} setPopupInfo={setPopupInfo}/>}
