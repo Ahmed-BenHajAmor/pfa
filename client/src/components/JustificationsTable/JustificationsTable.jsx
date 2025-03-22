@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import './JustificationsTable.css'
 import { Title } from '../Title'
-import { AdminApiCalls } from '../../apiCalls.js/admin'
+import { AdminApiCalls } from '../../apiCalls/admin'
 import { data } from 'react-router'
 
-function JustificationsTable({setPopupInfo}) {
+function JustificationsTable({setPopupInfo, popupInfo}) {
+  const [reload, setReload] = useState(false)
   const tableHead = ["CIN", "Nom", "Statut", "Motif", "details"]
   const [justificationsArray, setJustificationsArray] = useState([])
   useEffect(()=>{
    
     AdminApiCalls.getJustifications(setJustificationsArray);
+    
+    
+}, [popupInfo])
 
- 
-  }, [])
-  
   
   if(justificationsArray.length == 0){
     return <div className="empty-justifications-container justifications-container">
@@ -56,4 +57,4 @@ function JustificationsTable({setPopupInfo}) {
   )
 }
 
-export default JustificationsTable
+export default JustificationsTable;

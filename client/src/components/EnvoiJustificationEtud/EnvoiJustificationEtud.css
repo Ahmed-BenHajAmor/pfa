@@ -18,10 +18,11 @@ background: #939393;
 
 .marquer-absence{
     display: flex;
-    width: 100%;
     justify-content: space-between;
+    align-items: center;
+    width: 100%;
     margin-bottom: 140px;
-    padding: 50px 100px 0 100px
+    padding: 50px 50px 0 50px
 
 }
 .marquer-absence h1{
@@ -61,7 +62,9 @@ background: #939393;
     grid-template-columns: 3fr 2fr;
     width:95%;
 }
-
+.dropzone{
+    height: 100%;
+}
 .justification-ajout{
     display: flex;
     justify-content: center;
@@ -74,6 +77,7 @@ background: #939393;
     background-color: #e0e0e0;
     width: 336px;
     height: 100%;
+    gap: 10px;
 }
 
 .envoyer-button{
@@ -85,7 +89,8 @@ background: #939393;
     padding-top: 15%;
     padding-left: 25%;
 }
-.button{
+
+.button-justification{
     background-color: #e0e0e0;
     color:#666;
     border: 0;
@@ -96,7 +101,9 @@ background: #939393;
     cursor: pointer;
     height: fit-content;
     width: fit-content;
-    align-items: right;
+    display: flex;
+    align-self: end;
+    margin-right: 50px;
 }
 .justification-ajout div {
     display: flex;

@@ -5,6 +5,7 @@ import { Title } from '../Title'
 import { JustificationsTable } from '../JustificationsTable'
 import SearchIcon from '@mui/icons-material/Search';
 import { JustificationPopup } from '../JustificationPopup';
+import { useNavigate } from 'react-router';
 
 function AdminBody() {
   const [popupInfo, setPopupInfo] = useState({show: false, 
@@ -25,7 +26,7 @@ function AdminBody() {
           
           
           
-          <JustificationsTable setPopupInfo={setPopupInfo} />
+          <JustificationsTable popupInfo={popupInfo} setPopupInfo={setPopupInfo} />
           
          
 

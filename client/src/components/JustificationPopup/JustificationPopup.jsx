@@ -1,9 +1,10 @@
 import React from 'react'
 import './JustificationPopup.css'
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+import { AdminApiCalls } from '../../apiCalls/admin';
 
 function JustificationPopup({popupInfo, setPopupInfo}) {
-    console.log(popupInfo );
+     
     
     const dataToShow = {
         cin: popupInfo.data.cin,
@@ -71,8 +72,8 @@ function JustificationPopup({popupInfo, setPopupInfo}) {
         </table>
         <div className='decision-btns'>
 
-            <button className="accept-button" >Accepter la justification</button>
-            <button className="reject-button" >Rejeter la justification</button>
+            <button onClick={()=>AdminApiCalls.handelJustificationVerification(popupInfo.data.id_justif, "valide", setPopupInfo)} className="accept-button" >Accepter la justification</button>
+            <button onClick={()=>AdminApiCalls.handelJustificationVerification(popupInfo.data.id_justif, "rejete", setPopupInfo)} className="reject-button" >Rejeter la justification</button>
         </div>
     </div>
     </section>

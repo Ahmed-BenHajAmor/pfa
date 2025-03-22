@@ -4,8 +4,11 @@ import { MyGraph } from '../MyGraph'
 import { CoherenceChart } from '../CoherenceChart'
 import { JustificationImpactChart } from '../JustificationImpactChart'
 import { Button } from '../Button'
+import { SigninApiCalls } from '../../apiCalls/signinApi'
+import { useNavigate } from 'react-router'
 
 function EtudiantBody() {
+  const navigate = useNavigate()
   return (
     <section className='page-section etudiant'>
         <div style={{display: "flex", width: '100%', justifyContent:'end', marginBottom: "47px"}}>
