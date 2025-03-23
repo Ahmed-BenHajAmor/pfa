@@ -1,7 +1,6 @@
 import express from 'express';
 import pool from '../db_connection/db.mjs';
 import verifyToken from '../utils/midelwares/verifyToken.mjs';
-import v4 from 'uuid'
 
 const seanceRoutes = express.Router();
 
