@@ -24,7 +24,7 @@ export class UsersApiCalls{
 
     }
 
-    static takeAttendance(id_etudiant, id_session, date_session, etat){
+    static takeAttendance(id_etudiant, id_session, date_session, etat, setStudentList){
         const token = localStorage.getItem('token');
         
         
@@ -38,6 +38,15 @@ export class UsersApiCalls{
         .then(response => {
             
             console.log(response);
+            setStudentList(studentsList=>{
+                return studentsList.map(s=>{
+                    if(s.id == id_etudiant){
+                        return {...s, attendanceToken: true}
+                    }
+                    return s
+                })
+            })
+            
             
         
         })

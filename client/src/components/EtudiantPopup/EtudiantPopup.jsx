@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "./EtudiantPopup.css";
 import { UsersApiCalls } from "../../apiCalls/userApiCalls";
 
-function EtudiantPopup({ onClose, studentList, popupInfo }) {
+function EtudiantPopup({ onClose, studentList, popupInfo, setStudentList }) {
   useEffect(() => {
     document.getElementsByClassName("enseignant-section")[0].style.overflow = "hidden"; // Disable scrolling
     document.getElementsByClassName("Etudiant-popup-container")[0].style.marginTop = `${document.getElementsByClassName("enseignant-section")[0].scrollTop}px`
@@ -41,8 +41,8 @@ function EtudiantPopup({ onClose, studentList, popupInfo }) {
             return <tr key={student.id}>
             <td>{student.prenom} {student.nom}</td>
             <td  >
-              <button disabled={student.attendanceToken} onClick={()=>UsersApiCalls.takeAttendance(student.id, popupInfo.id_session, popupInfo.date_session, 'present')} className='boutton-present'>Présent(e)</button>
-              <button disabled={student.attendanceToken} onClick={()=>UsersApiCalls.takeAttendance(student.id, popupInfo.id_session, popupInfo.date_session, 'absent')} className='boutton-absent'>Absent(e)</button>
+              <button disabled={student.attendanceToken} onClick={()=>UsersApiCalls.takeAttendance(student.id, popupInfo.id_session, popupInfo.date_session, 'present', setStudentList)} className='boutton-present'>Présent(e)</button>
+              <button disabled={student.attendanceToken} onClick={()=>UsersApiCalls.takeAttendance(student.id, popupInfo.id_session, popupInfo.date_session, 'absent', setStudentList)} className='boutton-absent'>Absent(e)</button>
             </td>
           </tr>
           })

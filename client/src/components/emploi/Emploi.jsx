@@ -66,6 +66,7 @@ function Emploi({emploiData}) {
         <EtudiantPopup
           popupInfo={popup}
           studentList={studentList}
+          setStudentList={setStudentList}
           onClose={() => {
             setPopup(popup=>{
               return {...popup, show: false}
