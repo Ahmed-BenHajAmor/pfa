@@ -10,11 +10,15 @@ import { EnseignantApi } from "../../apiCalls/enseignantApi";
 
 function Emploi({emploiData}) {
   
-  const [showPopup, setShowPopup] = useState(false);
+  const [popup, setPopup] = useState({
+    show: false,
+    
+  });
   const events = emploiData.map(el=>{
     return {
       extendedProps: {
-        id_section: el.id_section
+        id_section: el.id_section,
+        id_session: el.id_session
       },
       title: el.nom,
       daysOfWeek: [el.jour], 
@@ -27,8 +31,10 @@ function Emploi({emploiData}) {
 
 
   const handleEventClick = (info) => {
+    const eventDate = info.event.start;
+    const formattedDate = eventDate.toISOString().split('T')[0]
     
-    setShowPopup(true);
+    setPopup(popup=>{return{...popup, show: true, id_session: info.event.extendedProps.id_session, date_session: formattedDate}});
     EnseignantApi.getStudentsFromSection(info.event.extendedProps.id_section, setStudentList)
   };
 
@@ -56,11 +62,14 @@ function Emploi({emploiData}) {
         events={events}
         eventClick={handleEventClick}
       />
-      {showPopup && (
+      {popup.show && (
         <EtudiantPopup
+          popupInfo={popup}
           studentList={studentList}
           onClose={() => {
-            setShowPopup(false);
+            setPopup(popup=>{
+              return {...popup, show: false}
+            });
           }}
         />
       )}

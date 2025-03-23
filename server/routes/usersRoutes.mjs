@@ -30,7 +30,6 @@ usersRoutes.get('/user', verifyToken, async (req, res) => {
 
 usersRoutes.get('/user/list-student', verifyToken, async (req, res)=>{
     const {id_section} = req.query
-    console.log(id_section);
     
     if(!id_section){
         return res.sendStatus(500)
@@ -43,4 +42,20 @@ usersRoutes.get('/user/list-student', verifyToken, async (req, res)=>{
     }
 })
 
+
+usersRoutes.post('/user/take-attendance', verifyToken, async (req, res)=>{
+    const {id_session, id_etudiant, date_session, etat} = req.body
+    console.log(req.body);
+    
+    
+    if(!(id_session && id_etudiant && date_session)){
+        return res.sendStatus(500)
+    }
+    try{
+        await pool.query('INSERT INTO presence VALUE (?,?,?,?)', [id_etudiant, etat, id_session, date_session]);
+        res.sendStatus(200)
+    }catch(err){
+        res.status(500).json({ error: 'Internal server error.' });
+    }
+})
 export default usersRoutes;
