@@ -29,15 +29,20 @@ usersRoutes.get('/user', verifyToken, async (req, res) => {
 
 
 usersRoutes.get('/user/list-student', verifyToken, async (req, res)=>{
-    const {id_section} = req.query
+    const {id_section, date_session, id_session} = req.query
     
     if(!id_section){
         return res.sendStatus(500)
     }
     try{
-        const [rows] = await pool.query('SELECT nom, prenom, id FROM etudiant WHERE id_section = ?', [id_section]);
-        res.status(200).json(rows)
+        const [rows1] = await pool.query('SELECT nom, prenom, id FROM etudiant WHERE id_section = ?', [id_section]);
+        const [rows2] = await pool.query('SELECT id_etudiant FROM presence WHERE date_session = ? AND id_session = ?', [date_session, id_session]);
+        res.status(200).json(rows1.map(s=>{
+            let attendanceToken = rows2.some(obj => obj.id_etudiant === s.id);;
+            return {...s, attendanceToken}
+        }))
     }catch(err){
+        
         res.status(500).json({ error: 'Internal server error.' });
     }
 })

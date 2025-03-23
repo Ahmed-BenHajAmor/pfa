@@ -35,7 +35,7 @@ function Emploi({emploiData}) {
     const formattedDate = eventDate.toISOString().split('T')[0]
     
     setPopup(popup=>{return{...popup, show: true, id_session: info.event.extendedProps.id_session, date_session: formattedDate}});
-    EnseignantApi.getStudentsFromSection(info.event.extendedProps.id_section, setStudentList)
+    EnseignantApi.getStudentsForSession(info.event.extendedProps.id_section, setStudentList, formattedDate, info.event.extendedProps.id_session)
   };
 
   return (

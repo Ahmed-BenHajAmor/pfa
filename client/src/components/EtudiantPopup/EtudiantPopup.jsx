@@ -37,11 +37,12 @@ function EtudiantPopup({ onClose, studentList, popupInfo }) {
       <tbody>
         {
           studentList.map(student=>{
+            
             return <tr key={student.id}>
             <td>{student.prenom} {student.nom}</td>
             <td  >
-              <button onClick={()=>UsersApiCalls.takeAttendance(student.id, popupInfo.id_session, popupInfo.date_session, 'present')} className='boutton-present'>Présent(e)</button>
-              <button onClick={()=>UsersApiCalls.takeAttendance(student.id, popupInfo.id_session, popupInfo.date_session, 'absent')} className='boutton-absent'>Absent(e)</button>
+              <button disabled={student.attendanceToken} onClick={()=>UsersApiCalls.takeAttendance(student.id, popupInfo.id_session, popupInfo.date_session, 'present')} className='boutton-present'>Présent(e)</button>
+              <button disabled={student.attendanceToken} onClick={()=>UsersApiCalls.takeAttendance(student.id, popupInfo.id_session, popupInfo.date_session, 'absent')} className='boutton-absent'>Absent(e)</button>
             </td>
           </tr>
           })
