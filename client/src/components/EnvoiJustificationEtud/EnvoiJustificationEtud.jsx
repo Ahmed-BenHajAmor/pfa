@@ -11,6 +11,7 @@ import { JustificationApiCalls } from '../../apiCalls/justificationApiCalls';
 import { Context } from '../../App';
 function EnvoiJustificationEtud({username, links}) {
   const {user} = useContext(Context)
+  
   const [file,setFile] = useState()
   const [showMsg,setShowMsg] = useState({missingField: false, justifSent: false})
   return (
@@ -25,7 +26,8 @@ function EnvoiJustificationEtud({username, links}) {
       const justifData = {
         date_et_heure_de_debut: new Date(`${dd.value}T${hd.value}`),
         date_et_heure_de_fin: new Date(`${df.value}T${hf.value}`),
-        id_enseignant: user.id,
+        id_enseignant: user.statut == "Enseignant" ? user.id : null,
+        id_etudiant: user.statut == "Etudiant" ? user.id : null,
         motif: motif.value,
 
       }

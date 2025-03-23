@@ -19,6 +19,8 @@ sendJustificationRoute.post('/justifications', upload.single('file'),verifyToken
     
     const {file} = req
     const {date_et_heure_de_debut, date_et_heure_de_fin, id_enseignant , id_etudiant, motif} = req.body
+    console.log(req.body);
+    
     
     if(!(date_et_heure_de_debut && date_et_heure_de_fin && (id_enseignant  || id_etudiant) && motif && file))
         return res.sendStatus(400);
@@ -32,7 +34,6 @@ sendJustificationRoute.post('/justifications', upload.single('file'),verifyToken
         fs.unlinkSync(filePath);
         res.sendStatus(200)
     }catch(err){
-        console.log(err);
         
         res.status(500).send(err)
     }

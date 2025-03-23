@@ -9,7 +9,6 @@ export class AdminApiCalls {
       withCredentials: true  
     })
     .then(response => {
-      console.log(response.data);
       
       setJustifiications(response.data || [])
       

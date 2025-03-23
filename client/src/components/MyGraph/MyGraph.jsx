@@ -1,35 +1,23 @@
 import React from "react";
 import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts";
 
-const data = [
-  { name: "Présence", value: 60, color: "#3FAE29" },
-  { name: "Absence", value: 20, color: "#FF6B6B" },
-  { name: "Absence justifiée", value: 20, color: "#FFC107" },
-];
 
-const MyGraph = () => {
+
+const MyGraph = ({etudiantStats}) => {
+  
+  const {presence, absence_justifier, absence_non_justifier} = etudiantStats
+
+  const sum = presence + absence_justifier + absence_non_justifier
+  const data = [
+    { name: "Présence", value: (presence / sum)*100, color: "#3FAE29" },
+    { name: "Absence justifiée", value: (absence_justifier / sum)*100, color: "#FFC107" },
+    { name: "Absence", value: (absence_non_justifier / sum)*100, color: "#FF6B6B" },
+  ]
   return (
     <div style={{ position: "relative" }}>
       <h2 style={{ color: "grey", fontWeight: "500" }}>Statistiques</h2>
       <h1 style={{fontSize:'30px'}}>Taux de présence</h1>
-      <select
-        name=""
-        id=""
-        style={{
-          backgroundColor: "#F8F8FF",
-          color: "#615E83",
-          borderRadius: "20px",
-          padding: "2% 3%",
-          position: "absolute",
-          top: "4%",
-          right: "0",
-          border: "0",
-        }}
-      >
-        <option value="">2025</option>
-        <option value="">2024</option>
-        <option value="">2023</option>
-      </select>
+      
       <hr style={{ marginTop: "5%", marginBottom: "3%" }} />
 
       <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "20px" }}>

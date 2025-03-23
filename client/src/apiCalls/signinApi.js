@@ -10,6 +10,7 @@ export class SigninApiCalls {
                 statut: "Admin"
             })
             navigate('/')
+            return
         }
         const body = {
             email, password

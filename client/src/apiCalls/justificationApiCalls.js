@@ -5,10 +5,15 @@ export class JustificationApiCalls {
         
         const token = localStorage.getItem('token');
         const formData = new FormData();
-      
+        
+        
         formData.append('date_et_heure_de_debut', justifData.date_et_heure_de_debut); 
         formData.append('date_et_heure_de_fin', justifData.date_et_heure_de_fin);   
-        formData.append('id_enseignant', justifData.id_enseignant);        
+        if(justifData.id_etudiant == null){
+            formData.append('id_enseignant', justifData.id_enseignant);        
+        }else{
+            formData.append('id_etudiant', justifData.id_etudiant);        
+        }
         formData.append('motif', justifData.motif);        
         formData.append('file', justifData.file);               
 
