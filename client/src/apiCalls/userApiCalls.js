@@ -37,11 +37,10 @@ export class UsersApiCalls{
         })
         .then(response => {
             
-            console.log(response);
             setStudentList(studentsList=>{
                 return studentsList.map(s=>{
                     if(s.id == id_etudiant){
-                        return {...s, attendanceToken: true}
+                        return {...s, attendanceToken: true, etat}
                     }
                     return s
                 })

@@ -3,6 +3,7 @@ import "./EtudiantPopup.css";
 import { UsersApiCalls } from "../../apiCalls/userApiCalls";
 
 function EtudiantPopup({ onClose, studentList, popupInfo, setStudentList }) {
+  
   useEffect(() => {
     document.getElementsByClassName("enseignant-section")[0].style.overflow = "hidden"; // Disable scrolling
     document.getElementsByClassName("Etudiant-popup-container")[0].style.marginTop = `${document.getElementsByClassName("enseignant-section")[0].scrollTop}px`
@@ -24,7 +25,7 @@ function EtudiantPopup({ onClose, studentList, popupInfo, setStudentList }) {
       <div className="Etudiant-popup">
        
 
-    
+    <p style={{display: "flex", justifySelf:"right", fontSize: '14px', marginBottom: '10px', fontWeight: '600'}}>double click pour sélectioner</p>
 
       <section className='table-etudiant'>
      <table>
@@ -41,8 +42,8 @@ function EtudiantPopup({ onClose, studentList, popupInfo, setStudentList }) {
             return <tr key={student.id}>
             <td>{student.prenom} {student.nom}</td>
             <td  >
-              <button disabled={student.attendanceToken} onClick={()=>UsersApiCalls.takeAttendance(student.id, popupInfo.id_session, popupInfo.date_session, 'present', setStudentList)} className='boutton-present'>Présent(e)</button>
-              <button disabled={student.attendanceToken} onClick={()=>UsersApiCalls.takeAttendance(student.id, popupInfo.id_session, popupInfo.date_session, 'absent', setStudentList)} className='boutton-absent'>Absent(e)</button>
+              <button disabled={student.attendanceToken} onDoubleClick={()=>UsersApiCalls.takeAttendance(student.id, popupInfo.id_session, popupInfo.date_session, 'present', setStudentList)} className={`boutton-present ${student.etat == 'absent' ? 'outline' : student.etat == 'present' ? "not-outlined" : ""}`}>Présent(e)</button>
+              <button disabled={student.attendanceToken} onDoubleClick={()=>UsersApiCalls.takeAttendance(student.id, popupInfo.id_session, popupInfo.date_session, 'absent', setStudentList)} className={`boutton-absent ${student.etat == 'present' ? 'outline' : student.etat == 'absent' ? "not-outlined" : ""}`}>Absent(e)</button>
             </td>
           </tr>
           })

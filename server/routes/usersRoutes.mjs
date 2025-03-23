@@ -36,12 +36,24 @@ usersRoutes.get('/user/list-student', verifyToken, async (req, res)=>{
     }
     try{
         const [rows1] = await pool.query('SELECT nom, prenom, id FROM etudiant WHERE id_section = ?', [id_section]);
-        const [rows2] = await pool.query('SELECT id_etudiant FROM presence WHERE date_session = ? AND id_session = ?', [date_session, id_session]);
+        const [rows2] = await pool.query('SELECT id_etudiant, etat FROM presence WHERE date_session = ? AND id_session = ?', [date_session, id_session]);
         res.status(200).json(rows1.map(s=>{
-            let attendanceToken = rows2.some(obj => obj.id_etudiant === s.id);;
+            let attendanceToken = rows2.some(obj => obj.id_etudiant === s.id);
+            
+            if(attendanceToken){
+                for(const el of rows2){
+                    
+                    if(el.id_etudiant == s.id){
+                        
+                        return {...s, attendanceToken, etat: el.etat}
+                    }
+                }
+            }
+            
             return {...s, attendanceToken}
         }))
     }catch(err){
+        console.log(err);
         
         res.status(500).json({ error: 'Internal server error.' });
     }
@@ -50,7 +62,6 @@ usersRoutes.get('/user/list-student', verifyToken, async (req, res)=>{
 
 usersRoutes.post('/user/take-attendance', verifyToken, async (req, res)=>{
     const {id_session, id_etudiant, date_session, etat} = req.body
-    console.log(req.body);
     
     
     if(!(id_session && id_etudiant && date_session)){

@@ -96,6 +96,14 @@ background: #939393;
 }
 
 .boutton-present:disabled, .boutton-absent:disabled{
-  opacity: .7;
   cursor: not-allowed;
+  
+}
+
+.outline{
+  opacity: .9;
+}
+
+.not-outlined{
+  opacity: .4;
 }
