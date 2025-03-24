@@ -42,4 +42,30 @@ etudiantRoutes.get('/student-stats/attendance-ratio', verifyToken, async (req, r
     }
 })
 
+
+etudiantRoutes.get('/student-stats/justification-impact', verifyToken, async (req, res)=>{
+    const {id} = req.user
+    if(!id){
+        return res.sendStatus(500);
+    }
+    try{
+
+       
+        const [justificationsValid] = await pool.query('SELECT COUNT(*) AS valide FROM justification WHERE id_etudiant = ? AND etat = ?', [id, 'valide'])
+        const [justificationsRejected] = await pool.query('SELECT COUNT(*) AS rejeter FROM justification WHERE id_etudiant = ? AND etat = ?', [id, 'rejete'])
+        const [justificationsEnAttente] = await pool.query('SELECT COUNT(*) AS en_attente FROM justification WHERE id_etudiant = ? AND etat IS NULL', [id])
+        
+        
+        
+        res.status(200).json({
+           valide: justificationsValid[0].valide,
+           rejeter: justificationsRejected[0].rejeter,
+           enAttente: justificationsEnAttente[0].en_attente
+        })
+    }catch(err){
+        console.log(err);
+        
+        res.status(400).send({msg: 'Internal server error'})
+    }
+})
 export default etudiantRoutes;

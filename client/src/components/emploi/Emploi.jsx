@@ -15,17 +15,20 @@ function Emploi({emploiData}) {
     
   });
   const events = emploiData.map(el=>{
+    
     return {
       extendedProps: {
         id_section: el.id_section,
-        id_session: el.id_session
+        id_session: el.id_session,
+        groupe: el.groupe
       },
-      title: el.nom,
+      title: `${el.nom} - ${el.nom_section.toUpperCase()} ${el.groupe ? `(G ${el.groupe})`: ''}- ${el.type}`,
       daysOfWeek: [el.jour], 
       startTime: el.heure_session,
       duration: "01:30"
     }
   })
+  
   
   const [studentList, setStudentList] = useState([]);
 
@@ -35,7 +38,7 @@ function Emploi({emploiData}) {
     const formattedDate = eventDate.toISOString().split('T')[0]
     
     setPopup(popup=>{return{...popup, show: true, id_session: info.event.extendedProps.id_session, date_session: formattedDate}});
-    EnseignantApi.getStudentsForSession(info.event.extendedProps.id_section, setStudentList, formattedDate, info.event.extendedProps.id_session)
+    EnseignantApi.getStudentsForSession({...info.event.extendedProps, date_session: formattedDate}, setStudentList)
   };
 
   return (

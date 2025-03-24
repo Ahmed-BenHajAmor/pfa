@@ -29,13 +29,14 @@ usersRoutes.get('/user', verifyToken, async (req, res) => {
 
 
 usersRoutes.get('/user/list-student', verifyToken, async (req, res)=>{
-    const {id_section, date_session, id_session} = req.query
+    const {id_section, date_session, id_session, groupe} = req.query
+    console.log(groupe);
     
     if(!id_section){
         return res.sendStatus(500)
     }
     try{
-        const [rows1] = await pool.query('SELECT nom, prenom, id FROM etudiant WHERE id_section = ?', [id_section]);
+        const [rows1] = await pool.query(`SELECT nom, prenom, id FROM etudiant WHERE id_section = ? ${groupe ? 'AND groupe=?' : ''}`, [id_section, groupe]);
         const [rows2] = await pool.query('SELECT id_etudiant, etat FROM presence WHERE date_session = ? AND id_session = ?', [date_session, id_session]);
         res.status(200).json(rows1.map(s=>{
             let attendanceToken = rows2.some(obj => obj.id_etudiant === s.id);

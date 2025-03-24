@@ -2,11 +2,14 @@ import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import './JustificationImpactChart.css'
 
-const JustificationImpactChart = () => {
+const JustificationImpactChart = ({etudiantStats}) => {
+  
   const data = [
-    { name: 'Acceptées', value: 4 },
-    { name: 'Refusées', value: 2 },
+    { name: 'Acceptées', value: etudiantStats?.valide },
+    { name: 'Refusées', value: etudiantStats?.rejeter },
+    { name: 'En attente', value: etudiantStats?.enAttente }
   ];
+  
 
   return (
     <div style={{ width: '100%', margin: '0 auto'}}>
@@ -29,7 +32,9 @@ const JustificationImpactChart = () => {
           type="category"
           allowDuplicatedCategory={false}
         />
-        <YAxis />
+        <YAxis 
+        tickCount={3}   
+        interval={0}/>
         <Tooltip />
         <Legend />
         <Bar 

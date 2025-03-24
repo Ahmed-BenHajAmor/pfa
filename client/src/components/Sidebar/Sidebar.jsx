@@ -32,7 +32,7 @@ const SideBarLink = ({linkInfo, links, setSideBarLinksArray})=>{
     return (
             <Link onClick={()=>{
                 setSideBarLinksArray(links.map(link=>{
-                    if(link.highlighted){
+                    if(link.highlighted && link.text != linkInfo.text){
                         return {...link, highlighted: false}
                     }
                     if(link.text == linkInfo.text){

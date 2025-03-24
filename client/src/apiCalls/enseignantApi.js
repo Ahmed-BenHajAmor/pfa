@@ -25,10 +25,10 @@ export class EnseignantApi {
         
     }
 
-    static getStudentsForSession(id_section, setStudentList, date_session, id_session){
+    static getStudentsForSession(data, setStudentList){
       const token = localStorage.getItem('token')      
     
-      axios.get(`http://localhost:3000/user/list-student?id_section=${id_section}&date_session=${date_session}&id_session=${id_session}`, {
+      axios.get(`http://localhost:3000/user/list-student?id_section=${data.id_section}&date_session=${data.date_session}&id_session=${data.id_session}${data.groupe ? `&groupe=${data.groupe}`:''}`, {
         headers: {
           'Content-Type': 'application/json',
           "Authorization": `Bearer ${token}`  

@@ -5,7 +5,7 @@ import axios from "axios";
 
 export class EtudiantApis {
 
-    static getData(setEtudiantStats) {
+    static getAttendanceStats(setEtudiantStats) {
       const token = localStorage.getItem('token')
       
     
@@ -15,7 +15,10 @@ export class EtudiantApis {
             "Authorization": `Bearer ${token}`  
           },
         }).then(res=>{
-            setEtudiantStats(res.data)
+            setEtudiantStats(stats=>{
+              return {...stats,
+              ...res.data}
+            })
           
           
         }).catch(err=>{
@@ -25,5 +28,32 @@ export class EtudiantApis {
    
         
     }
+
+
+    static getJustificationImpact(setEtudiantStats) {
+      const token = localStorage.getItem('token')
+      
+    
+        axios.get(`http://localhost:3000/student-stats/justification-impact`, {
+          headers: {
+            'Content-Type': 'application/json',
+            "Authorization": `Bearer ${token}`  
+          },
+        }).then(res=>{
+          setEtudiantStats(stats=>{
+            return {...stats,
+            ...res.data}
+          })
+          
+          
+        }).catch(err=>{
+          console.log(err);
+          
+        });
+   
+        
+    }
+
+
 
 }

@@ -3,7 +3,53 @@ import './JustificationPopup.css'
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import { AdminApiCalls } from '../../apiCalls/admin';
 
+function downloadPieceJointe(e, jsonData) {
+    const bufferData = jsonData.data.piece_jointe.data;
+
+    const uint8Array = new Uint8Array(bufferData);
+
+    let mimeType = getMimeType(bufferData);
+    
+    const blob = new Blob([uint8Array], { type: mimeType });
+
+    const url = window.URL.createObjectURL(blob);
+
+    e.target.href = url;
+    const fileExtension = getFileExtension(mimeType);
+    e.target.download = `piece_jointe${fileExtension}`; 
+
+    setTimeout(() => window.URL.revokeObjectURL(url), 100);
+}
+
+function getMimeType(bufferData) {
+    const magicNumbers = bufferData.slice(0, 4); 
+
+    if (magicNumbers[0] === 137 && magicNumbers[1] === 80 && magicNumbers[2] === 78 && magicNumbers[3] === 71) {
+        return "image/png"; // PNG
+    } else if (magicNumbers[0] === 255 && magicNumbers[1] === 216) {
+        return "image/jpeg"; // JPEG
+    } else if (magicNumbers[0] === 37 && magicNumbers[1] === 80 && magicNumbers[2] === 68 && magicNumbers[3] === 70) {
+        return "application/pdf"; // PDF
+    } else {
+        return "application/octet-stream";
+    }
+}
+
+function getFileExtension(mimeType) {
+    switch (mimeType) {
+        case "image/png":
+            return ".png";
+        case "image/jpeg":
+            return ".jpg";
+        case "application/pdf":
+            return ".pdf";
+        default:
+            return "";
+    }
+}
 function JustificationPopup({popupInfo, setPopupInfo}) {
+    console.log(popupInfo);
+    
      
     
     const dataToShow = {
@@ -66,7 +112,7 @@ function JustificationPopup({popupInfo, setPopupInfo}) {
             }
             <tr>
                 <td>piece jointe</td>
-                <td><a href="#">Telecharger</a></td>
+                <td><a href='#' onClick={(e)=>downloadPieceJointe(e,popupInfo)}>Telecharger</a></td>
             </tr>
             </tbody>
         </table>

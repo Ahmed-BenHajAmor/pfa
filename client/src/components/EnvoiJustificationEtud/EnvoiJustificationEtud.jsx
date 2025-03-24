@@ -9,10 +9,12 @@ import WatchIcon from '@mui/icons-material/Watch';
 import { useDropzone } from 'react-dropzone';
 import { JustificationApiCalls } from '../../apiCalls/justificationApiCalls';
 import { Context } from '../../App';
+import DoneIcon from '@mui/icons-material/Done';
 function EnvoiJustificationEtud({username, links}) {
   const {user} = useContext(Context)
   
-  const [file,setFile] = useState()
+  const [file,setFile] = useState(null)
+  
   const [showMsg,setShowMsg] = useState({missingField: false, justifSent: false})
   return (
     <>
@@ -31,7 +33,7 @@ function EnvoiJustificationEtud({username, links}) {
         motif: motif.value,
 
       }
-      if(!(dd.value && hd.value && df.value && hf.value && motif.value)){
+      if(!(dd.value && hd.value && df.value && hf.value && motif.value) || justifData.date_et_heure_de_debut > justifData.date_et_heure_de_fin){
         setShowMsg(obj=> {
           return {justifSent: false, missingField: true}
         })
@@ -66,9 +68,9 @@ function EnvoiJustificationEtud({username, links}) {
           </div>
 
         </div>
-        <FileDropZone setFile={setFile}/>
+        <FileDropZone setFile={setFile} file={file}/>
       </div>
-      {showMsg.missingField && <p style={{marginLeft: '50px'}} className='error'>Remplir toutes les champs obligatoire</p>}
+      {showMsg.missingField && <p style={{marginLeft: '50px'}} className='error'>Vérifier les informations introduites</p>}
       {showMsg.justifSent && <p style={{color: 'green', marginLeft: '50px'}} className='error'>jutification envoyer</p>}
       
       <button className='button-justification' type="submit" >Envoyer</button>
@@ -91,7 +93,7 @@ function Input({text, type = 'date', name}){
   )
 }
 
-function FileDropZone({setFile}) {
+function FileDropZone({setFile, file}) {
   const onDrop = useCallback((acceptedFiles) => {
     setFile(acceptedFiles[0])
   }, []);
@@ -102,11 +104,12 @@ function FileDropZone({setFile}) {
     <div {...getRootProps()} className="dropzone">
       <input {...getInputProps()} />
       <section className='justification-ajout'>
-        <AddCircleOutlineIcon></AddCircleOutlineIcon>
-        <label htmlFor="">
+        {!file ? <AddCircleOutlineIcon/> : <DoneIcon style={{color: 'green'}} />}
+        
+        <label>
         {isDragActive ? (
           "déposer le fichier"
-        ) : "Ajouter la piece jointe"}
+        ) : file ? <p style={{color: 'green'}}>Fichier importé avec succès</p> : "Ajouter la piece jointe"}
         </label>
       </section>
       

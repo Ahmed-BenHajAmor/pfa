@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "./EtudiantPopup.css";
 import { UsersApiCalls } from "../../apiCalls/userApiCalls";
-
+import ReportProblemIcon from '@mui/icons-material/ReportProblem';
 function EtudiantPopup({ onClose, studentList, popupInfo, setStudentList }) {
   
   useEffect(() => {
@@ -25,7 +25,7 @@ function EtudiantPopup({ onClose, studentList, popupInfo, setStudentList }) {
       <div className="Etudiant-popup">
        
 
-    <p style={{display: "flex", justifySelf:"right", fontSize: '14px', marginBottom: '10px', fontWeight: '600'}}>double click pour sélectioner</p>
+    <p style={{display: "flex", justifySelf:"right", fontSize: '14px', marginBottom: '10px', fontWeight: '600', alignItems: 'center'}}><ReportProblemIcon style={{fontSize: '20px', marginRight: '10px'}} />double click pour sélectioner</p>
 
       <section className='table-etudiant'>
      <table>

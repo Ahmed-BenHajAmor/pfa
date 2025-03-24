@@ -12,7 +12,7 @@ seanceRoutes.get('/session', async (req, res) => {
     res.sendStatus(500)
   }
   try {
-    const [rows] = await pool.query('SELECT * FROM session JOIN matiere ON session.id_mat = matiere.id_mat WHERE id_enseignant = ?',[id_enseignant]);
+    const [rows] = await pool.query('SELECT * FROM session JOIN matiere ON session.id_mat = matiere.id_mat JOIN section ON session.id_section = section.id_section WHERE id_enseignant = ?',[id_enseignant]);
     
     res.json(rows);
   } catch (error) {
@@ -22,17 +22,7 @@ seanceRoutes.get('/session', async (req, res) => {
 });
 
 
-seanceRoutes.patch("/session/state", verifyToken, async (req, res)=>{
-  const {id_session, id_seance, id_etudiant} = req.body
-  if(!(id_session && id_seance && id_etudiant)){
-    res.sendStatus(500)
-  }
-  try{
-    await pool.query('');
-  }catch(err){
-    res.status(500).json({ error: 'Erreur serveur' });
-  }
-})
+
 
 
 export default seanceRoutes;
