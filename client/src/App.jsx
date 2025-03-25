@@ -1,5 +1,5 @@
 import './App.css'
-import { Admin, AdminBody, Emploi, EnseignantBody, EtudiantBody, JustificationStats, SignIn } from './components'
+import { Admin, AdminBody, Emploi, EnseignantBody, EtudiantBody, Home, JustificationStats, SignIn } from './components'
 import { Enseignant } from './components/Enseignant'
 import { Etudiant } from './components/Etudiant'
 import {BrowserRouter, Route, Routes, useNavigate} from "react-router-dom"
@@ -45,13 +45,14 @@ const RoutesContainer = ()=>{
         UsersApiCalls.getUser(setUser, navigate)
     }
     else
-      navigate('/signin')
+      navigate('/home')
   }, [])
   
   return (
     <Context.Provider value={{ user, setUser}}>
       <Routes>
       <Route path="/signin" element={<SignIn />}/>
+      <Route path="/home" element={<Home />}/>
 
       <Route path="/" element={user.statut == "Etudiant" ? <Etudiant /> : user.statut == "Enseignant" ? <Enseignant /> :user.statut == "Admin" &&  <Admin />}>
         <Route path="/" element={user.statut == "Etudiant" ? <EtudiantBody /> : user.statut == "Enseignant" ? <EnseignantBody /> :user.statut == "Admin" && <AdminBody />}/>

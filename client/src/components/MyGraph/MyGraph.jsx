@@ -10,8 +10,8 @@ const MyGraph = ({etudiantStats}) => {
   const sum = presence + absence_justifier + absence_non_justifier
   const data = [
     { name: "Présence", value: (presence / sum)*100, color: "#3FAE29" },
-    { name: "Absence justifiée", value: (absence_justifier / sum)*100, color: "#FFC107" },
     { name: "Absence", value: (absence_non_justifier / sum)*100, color: "#FF6B6B" },
+    { name: "Absence justifiée", value: (absence_justifier / sum)*100, color: "#FFC107" },
   ]
   return (
     <div style={{ position: "relative" }}>

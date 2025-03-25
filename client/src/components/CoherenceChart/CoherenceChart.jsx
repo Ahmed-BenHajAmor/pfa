@@ -1,22 +1,24 @@
 import { LinearProgress } from '@mui/material';
 import React from 'react';
-import { LineChart, XAxis, YAxis, Line, Legend, CartesianGrid } from 'recharts';
+import { LineChart, XAxis, YAxis, Line, CartesianGrid } from 'recharts';
 
 // Sample data for the chart
-const data = [
-  { week: 'Semaine 1', lastMonth: 80, thisMonth: 70 },
-  { week: 'Semaine 2', lastMonth: 60, thisMonth: 65 },
-  { week: 'Semaine 3', lastMonth: 75, thisMonth: 68 },
-  { week: 'Semaine 4', lastMonth: 50, thisMonth: 55 },
-];
 
-const CoherenceChart = () => {
+const CoherenceChart = ({etudiantStats}) => {
+  
+  const data = [
+    { week: 'Semaine 1', lastMonth: etudiantStats?.previousMonth?.firstWeekScore, thisMonth: etudiantStats?.thisMonth?.firstWeekScore },
+    { week: 'Semaine 2', lastMonth: etudiantStats?.previousMonth?.secondWeekScore, thisMonth: etudiantStats?.thisMonth?.secondWeekScore },
+    { week: 'Semaine 3', lastMonth: etudiantStats?.previousMonth?.thirdWeekScore, thisMonth: etudiantStats?.thisMonth?.thirdWeekScore },
+    { week: 'Semaine 4', lastMonth: etudiantStats?.previousMonth?.fourthWeekScore, thisMonth: etudiantStats?.thisMonth?.fourthWeekScore },
+  ];
+
+  const coherence = (data[0].thisMonth + data[1].thisMonth + data[2].thisMonth + data[3].thisMonth) / 4 -  (data[0].lastMonth + data[1].lastMonth + data[2].lastMonth + data[3].lastMonth) / 4 || 0
   return (
     <div style={{ fontFamily: 'Arial, sans-serif' ,position:'relative',width:'100%'}}>
-      {/* Title and Subtitle */}
       <h2 style={{ color: "grey", fontWeight: "500" }}>Cohérence</h2>
       
-      <p style={{ color: 'black',fontSize:'30px',fontWeight:'bold'}}>11% <span style={{color:'red'}}>▼</span></p>
+      <p style={{ color: 'black',fontSize:'30px',fontWeight:'bold'}}>{Math.abs(Math.floor(coherence))}% {coherence<0 ? <span style={{color:'red'}}>▼</span> : <span style={{color:'green'}}>▲</span>}</p>
       <div style={{display:'flex',flexWrap:'wrap',width:'40%',position: "absolute",top: "7%",right: "-2%"}}>
           <div style={{width: "12px",
                       height: "12px",
