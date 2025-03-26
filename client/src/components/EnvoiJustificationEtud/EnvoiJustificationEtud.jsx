@@ -33,7 +33,7 @@ function EnvoiJustificationEtud({username, links}) {
         motif: motif.value,
 
       }
-      if(!(dd.value && hd.value && df.value && hf.value && motif.value) || justifData.date_et_heure_de_debut > justifData.date_et_heure_de_fin){
+      if(!(dd.value && hd.value && df.value && hf.value && motif.value) || justifData.date_et_heure_de_debut > justifData.date_et_heure_de_fin || !file){
         setShowMsg(obj=> {
           return {justifSent: false, missingField: true}
         })

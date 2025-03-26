@@ -18,7 +18,7 @@ function EnseignantBody() {
     <section className="page-section enseignant-section">
 
     <div style={{display: "flex", width: '100%', justifyContent:'end', marginBottom: "47px"}}>
-          <Button>Log out</Button>
+          <Button>Se Déconnecter</Button>
     </div>
     <Title title={{text: "Votre emploi de temps", font: 36}} subTitle={"Gerer vos séances"}/>
     <section className='emploi-de-temps'> <Emploi emploiData={emploiData} /></section>
