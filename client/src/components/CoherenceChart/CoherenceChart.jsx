@@ -2,7 +2,6 @@ import { LinearProgress } from '@mui/material';
 import React from 'react';
 import { LineChart, XAxis, YAxis, Line, CartesianGrid } from 'recharts';
 
-// Sample data for the chart
 
 const CoherenceChart = ({etudiantStats}) => {
   
@@ -19,30 +18,34 @@ const CoherenceChart = ({etudiantStats}) => {
       <h2 style={{ color: "grey", fontWeight: "500" }}>Cohérence</h2>
       
       <p style={{ color: 'black',fontSize:'30px',fontWeight:'bold'}}>{Math.abs(Math.floor(coherence))}% {coherence<0 ? <span style={{color:'red'}}>▼</span> : <span style={{color:'green'}}>▲</span>}</p>
-      <div style={{display:'flex',flexWrap:'wrap',width:'40%',position: "absolute",top: "7%",right: "-2%"}}>
-          <div style={{width: "12px",
-                      height: "12px",
-                      marginBottom:'10px',
-                      backgroundColor:'#ff69b4',
-                      borderRadius: "50%",
-                      marginRight:"3%",
-                      marginTop:"1%"}}>
+      <div style={{display:'flex',flexDirection:'column', justifyContent: 'left',width:'40%',position: "absolute",top: "7%",right: "-2%"}}>
+          <div style={{display: "flex", gap: '10px', alignItems: 'center'}}>
+
+            <div style={{width: "12px",
+                        height: "12px",
+                        backgroundColor:'#ff69b4',
+                        borderRadius: "50%",
+                        display: 'flex',
+                        alignItems: 'center'
+                    }}>
+            </div>
+            <p>Le mois avant-dernier</p>
           </div>
-        <p>Ce mois-ci</p>
+
+          <div style={{display: "flex", gap: '10px', alignItems: 'center'}}>
+            
           <div style={{width: "12px",
                         height: "12px",
-                        marginBottom:'10px',
                         backgroundColor:'#8884d8',
                         borderRadius: "50%",
-                        marginRight:"3%",
-                        marginLeft:"3%",
-                        marginTop:"1%"
-                        }}>
+                        display: 'flex',
+                        alignItems: 'center'
+                      }}>
           </div>
-          <p>Le mois dernier</p>
+        <p>Le mois dernier</p>
+        </div>
       </div>
       <hr style={{ marginTop: "5%", marginBottom: "3%" }} />
-      {/* Line Chart */}
       <LineChart
       style={{width:'100%'}}
       
@@ -51,13 +54,10 @@ const CoherenceChart = ({etudiantStats}) => {
         data={data}
         margin={{ top: 0, right: 0, left: 0, bottom: 0 }}
       >
-        {/* Background Grid */}
         <CartesianGrid stroke="#f5f5f5" />
 
-        {/* X-Axis: Weeks */}
         <XAxis dataKey="week" stroke="grey" margin-top="5px"/>
 
-        {/* Y-Axis: Percentage Values */}
         <YAxis
           domain={[0, 100]}
           ticks={[0, 25, 50, 75, 100]}

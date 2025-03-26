@@ -76,6 +76,7 @@ etudiantRoutes.get('/student-stats/month-consistency', verifyToken, async (req, 
     }
     try {
         const today = new Date(); 
+   
         
 
         const findScore = (week)=>{
@@ -152,7 +153,7 @@ etudiantRoutes.get('/student-stats/month-consistency', verifyToken, async (req, 
             }));
 
        
-            
+         
             return {
                 firstWeekScore: findScore(firstWeekFormatted),
                 secondWeekScore: findScore(secondWeekFormatted),

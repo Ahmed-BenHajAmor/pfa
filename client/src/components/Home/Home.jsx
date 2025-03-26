@@ -26,7 +26,6 @@ const Homepage = () => {
         <TestimonialsSection />
         <FAQSection />
         <ContactSection />
-        <CallToActionSection />
         <Footer />
       </div>
     </div>
@@ -282,13 +281,7 @@ const ContactSection = () => (
   </section>
 );
 
-const CallToActionSection = () => (
-  <section id="cta" className="cta-section">
-    <h2>Prêt à Commencer ?</h2>
-    <p>Rejoignez des milliers d’utilisateurs satisfaits qui optimisent leur gestion des absences avec SAGA. Essayez dès aujourd’hui et découvrez une nouvelle façon de travailler.</p>
-    <a href="#contact" className="cta-btn">Inscrivez-Vous Maintenant</a>
-  </section>
-);
+
 
 const Footer = () => (
   <footer className="footer">

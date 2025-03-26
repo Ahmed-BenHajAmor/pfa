@@ -10,7 +10,7 @@
     padding-right:100px;
 
 }
-.homepage section{
+.homepage section:not(:last-child){
     min-height: 100vh;
     display: flex;
     flex-direction: column;
