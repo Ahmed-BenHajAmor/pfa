@@ -75,7 +75,7 @@ etudiantRoutes.get('/student-stats/month-consistency', verifyToken, async (req, 
         return res.sendStatus(500);
     }
     try {
-        const today = new Date(); 
+        const today = new Date(2025, 3, 20); 
    
         
 

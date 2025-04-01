@@ -18,7 +18,7 @@ export class UsersApiCalls{
         })
         .catch(err => {
             console.error('Erreur Axios:', err)
-            navigate("/signin")
+            navigate("/home")
         });
         
 
