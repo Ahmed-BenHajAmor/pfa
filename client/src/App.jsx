@@ -28,7 +28,7 @@ function App() {
 
 const RoutesContainer = ()=>{
   const [user, setUser] = useState({})
-  
+  const [showSidebar, SetShowSidebar] = useState(false)
   const navigate = useNavigate()
   useEffect(()=>{
     
@@ -49,7 +49,7 @@ const RoutesContainer = ()=>{
   }, [])
   
   return (
-    <Context.Provider value={{ user, setUser}}>
+    <Context.Provider value={{ user, setUser, sidebarState : {showSidebar, SetShowSidebar}}}>
       <Routes>
       <Route path="/signin" element={<SignIn />}/>
       <Route path="/home" element={<Home />}/>

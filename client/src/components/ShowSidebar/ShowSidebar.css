@@ -1,0 +1,15 @@
+.show-sidebar-btn{
+    height: fit-content;
+    padding: 10px;
+    border: 0;
+    border-radius: 0 10px 10px 0;
+    background-color: #152259;
+    color: white;
+}
+
+
+@media (min-width: 1000px){
+    .show-sidebar-btn{
+        display: none;
+    }
+}

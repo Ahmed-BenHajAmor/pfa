@@ -123,17 +123,17 @@ body {
 }
 
 /* Sections Common */
-section {
+.homepage section {
   padding: 80px 30px;
   text-align: center;
 }
 
-h2 {
+.homepage h2 {
   font-size: 28px;
   margin-bottom: 40px;
 }
 
-p {
+.homepage p {
   font-size: 14px;
   line-height: 1.6;
 }

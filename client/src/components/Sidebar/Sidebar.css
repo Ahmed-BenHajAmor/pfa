@@ -1,4 +1,4 @@
-.sidebar{
+.sidebar > div{
     width: fit-content;
     color: white;
     background-color: #152259;
@@ -7,6 +7,13 @@
     flex-direction: column;
     align-items: center;
     font-size: 14px;
+    
+}
+
+.sidebar {
+    display: flex;
+    gap: 0;
+    height: 100%;
 }
 
 
@@ -58,4 +65,17 @@
 
 .highlight{
     background-color: #509CDB;
+}
+
+
+@media  (max-width: 1200px) {
+    .sidebar{
+        position: fixed;
+        z-index: 999;
+        transition: ease .5s;
+        
+    }
+    .hide-sidebar{
+        translate: calc(-100% + 44px)  0;
+    }
 }

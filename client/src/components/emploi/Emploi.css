@@ -9,19 +9,34 @@
     overflow-y: auto;
     
     
+    
+}
+
+.fc-view-harness{
+  overflow-x: auto
+}
+.fc-timeGridWeek-view{
+  min-width: 800px;
+
 }
 .fc-toolbar-title {
-    transform: translateX(-35%);
-    font-size: 1.5rem; /* Adjust font size as needed */
-    white-space: nowrap; /* Prevent title from wrapping */
-    color: #4F4F4F;
-  }
-  .fc-toolbar{
-    display: flex;
-    align-items: center;
-  }
+  white-space: nowrap; 
+  color: #4F4F4F;
+}
 
 
+.fc-toolbar{
+  display: flex;
+  flex-direction: column;
+
+}
+.fc-toolbar-chunk{
+  margin-top: 10px;
+  width: 100%;
+}
+.fc-toolbar-chunk:nth-child(2){
+  text-align: center;
+}
 .fc-col-header-cell{
   background-color:#2D88D4 ;
   color: white;
@@ -33,6 +48,35 @@
 
 .fc-timegrid-col {
   border-right: none !important;
+}
+
+
+@media (max-width: 1000px) {
+
+  .fc-view-harness{
+    font-size: 11px;
+    font-weight: 400;
+  }
+}
+
+
+@media (max-width: 500px) {
+  .emploi-container{
+    padding: 10px;
+  }
+ 
+  .fc-toolbar-ltr{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .fc-toolbar-chunk{
+    text-align: center;
+  }
+  #fc-dom-2{
+    transform: translateX(0);
+  }
 }
 
 

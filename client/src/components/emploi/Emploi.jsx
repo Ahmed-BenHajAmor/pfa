@@ -49,7 +49,7 @@ function Emploi({emploiData}) {
         locale={frLocale}
         slotLabelInterval="01:30:00"
         allDaySlot={false}
-        initialDate="2025-03-24"
+        initialDate={ new Date()}
         hiddenDays={[0]}
         headerToolbar={{
           left: "prev today",

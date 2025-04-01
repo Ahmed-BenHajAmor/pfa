@@ -26,4 +26,8 @@ border-radius: 4px;
 background: #939393;
 }
 
-
+@media (max-width: 1000px){
+    .enseignant-section{
+        padding: 46px 20px;
+    }
+}

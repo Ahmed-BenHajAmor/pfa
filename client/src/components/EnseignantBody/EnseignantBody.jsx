@@ -6,6 +6,7 @@ import { Title } from '../Title'
 import { useNavigate } from 'react-router'
 import { Context } from '../../App'
 import { EnseignantApi } from '../../apiCalls/enseignantApi'
+import { ShowSidebar } from '../ShowSidebar'
 
 function EnseignantBody() {
   const [emploiData, setEmploiData] = useState([])

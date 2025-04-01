@@ -1,12 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './Sidebar.css'
 import logo from '../../assets/logo.png'
 import { Link } from 'react-router'
+import { Context } from '../../App'
+import { ShowSidebar } from '../ShowSidebar'
 
 
 function Sidebar({userinfo, links, setSideBarLinksArray}) {
+    const {sidebarState : {showSidebar}} = useContext(Context)
   return (
-    <nav className="sidebar">
+    <nav className={`${!showSidebar && "hide-sidebar"} sidebar`}>
+        <div>
+
         <div className="logo-userinfo">
             <img width="62px" height="62px" src={logo} alt="SAGA" />
             <div>
@@ -23,6 +28,8 @@ function Sidebar({userinfo, links, setSideBarLinksArray}) {
                 })}
         </div>
 
+        </div>
+        <ShowSidebar />
     </nav>
   )
 }
