@@ -52,7 +52,7 @@ function SignIn() {
 
 
 const HeaderBar = ()=>{
-    return <header>
+    return <header className='signin-header'>
         <h1 style={{fontSize: "64px", fontWeight: 600}}>SAGA</h1>
         <p style={{fontSize: "10px", fontWeight: 600}}>Absences gérées, stress évité</p>
     </header>

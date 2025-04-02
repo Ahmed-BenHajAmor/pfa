@@ -10,3 +10,9 @@
     gap: 30px;
     
 }
+
+@media (max-width: 1000px){
+    .etudiant{
+        padding: 46px 20px;
+    }
+}

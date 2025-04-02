@@ -9,3 +9,10 @@
     height: fit-content;
     width: fit-content;
 }
+
+
+@media (max-width: 500px){
+    .btn{
+        padding: 11.5px 25px;
+    }
+}

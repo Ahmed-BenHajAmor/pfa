@@ -14,3 +14,10 @@
     font-size: 13px;
     font-weight: 600;
 }
+
+
+@media (max-width: 500px){
+    .title > h1{ 
+        font-size: 30px !important;
+    }
+}

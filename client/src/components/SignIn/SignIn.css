@@ -70,3 +70,9 @@ cursor: pointer;
 .signin-button:hover {
 background-color: #152259;
 }
+
+@media (max-width: 500px) {
+    .signin-header > h1{
+        font-size: 40px !important;
+    }
+}
