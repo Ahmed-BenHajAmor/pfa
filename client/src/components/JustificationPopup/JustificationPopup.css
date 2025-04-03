@@ -75,3 +75,48 @@ width: 175px;
     padding: 0 27px;
     
 }
+
+
+@media (max-width: 768px) {
+    .justification-popup {
+        width: 95%;
+        min-width: 0;
+        padding: 1rem 0;
+        font-size: 12px;
+    }
+
+    .decision-btns {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .accept-button,
+    .reject-button {
+        max-width: none;
+    }
+ 
+}
+
+@media (max-width: 480px) {
+    .justification-popup table tr {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .justification-popup table td {
+        display: block;
+        width: 100%;
+    }
+
+    .popup-header {
+        padding: 0 1rem;
+    }
+
+    .justification-popup table {
+        padding: 0 1rem;
+    }
+
+    .decision-btns {
+        padding: 0 1rem;
+    }
+}

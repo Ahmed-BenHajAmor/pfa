@@ -20,7 +20,7 @@ function EnvoiJustificationEtud({username, links}) {
     <>
     <section className='page-section justification-section'>
       <div style={{display: "flex", width: '100%', justifyContent:'end', marginBottom: "47px"}}>
-        <Button>log out</Button>
+        <Button>Se Déconnecter</Button>
       </div>
     <form style={{display: 'flex', flexDirection: 'column'}} onSubmit={(e)=>{
       e.preventDefault()
@@ -68,7 +68,7 @@ function EnvoiJustificationEtud({username, links}) {
           </div>
 
         </div>
-        <FileDropZone setFile={setFile} file={file}/>
+        <FileDropZone sty setFile={setFile} file={file}/>
       </div>
       {showMsg.missingField && <p style={{marginLeft: '50px'}} className='error'>Vérifier les informations introduites</p>}
       {showMsg.justifSent && <p style={{color: 'green', marginLeft: '50px'}} className='error'>jutification envoyer</p>}

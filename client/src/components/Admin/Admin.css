@@ -62,11 +62,11 @@
 
 
 .justifications-container{
-    width: 100%;
+    max-width: 100%;
     background-color: #FCFAFA;
     height: 100%;
-    
-    overflow-y: scroll;
+    overflow-x: auto;
+    overflow-y: auto;
     scroll-behavior: smooth;
 
 }
@@ -76,16 +76,24 @@
     align-items: center;
 }
 .justifications-container::-webkit-scrollbar {
-    width: 8px; 
-  }
-  
-  .justifications-container::-webkit-scrollbar-thumb {
-    background: #bababa; 
-    border-radius: 4px; 
-  }
-  
-  .justifications-container::-webkit-scrollbar-thumb:hover {
-    background: #939393;
-  }
-  
+width: 8px; 
+}
+
+.justifications-container::-webkit-scrollbar-thumb {
+background: #bababa; 
+border-radius: 4px; 
+}
+
+.justifications-container::-webkit-scrollbar-thumb:hover {
+background: #939393;
+}
+.admin{
+    max-width: 100%;
+}
+
+@media (max-width: 800px){
+    .admin{
+        padding: 46px 20px;
+    }
+}
 

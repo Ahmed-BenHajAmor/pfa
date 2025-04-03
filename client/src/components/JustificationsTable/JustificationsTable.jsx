@@ -4,10 +4,9 @@ import { Title } from '../Title'
 import { AdminApiCalls } from '../../apiCalls/admin'
 import { data } from 'react-router'
 
-function JustificationsTable({setPopupInfo, popupInfo}) {
+function JustificationsTable({setPopupInfo, popupInfo, justificationsArray: {filtered}, setJustificationsArray}) {
   const [reload, setReload] = useState(false)
   const tableHead = ["CIN", "Nom", "Statut", "Motif", "details"]
-  const [justificationsArray, setJustificationsArray] = useState([])
   useEffect(()=>{
    
     AdminApiCalls.getJustifications(setJustificationsArray);
@@ -16,7 +15,7 @@ function JustificationsTable({setPopupInfo, popupInfo}) {
 }, [popupInfo])
 
   
-  if(justificationsArray.length == 0){
+  if(filtered.length == 0){
     return <div className="empty-justifications-container justifications-container">
     <Title title={{text: "Aucune justification en attente de vérification n'a été trouvée.", font: 24}} subTitle={"Il n'existe aucun justificatif en attente de vérification."}/>
   </div>
@@ -34,7 +33,7 @@ function JustificationsTable({setPopupInfo, popupInfo}) {
             </tr>
         </thead>
         <tbody>
-            {justificationsArray.map(justif=>{
+            {filtered.map(justif=>{
                 
                 return (
                     <tr key={justif.id_justif} className={justif.id_enseignant == null ? 'student-row' : 'professor-row'}>

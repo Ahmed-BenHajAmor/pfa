@@ -2,9 +2,11 @@
     width: 100%;
     font-size: 12px;
     border-collapse: collapse;
+    min-width: 950px;
 }
 
 
+    
 
 .justifications-table td, th{
     padding: 16px 8px;

@@ -10,7 +10,7 @@ export class AdminApiCalls {
     })
     .then(response => {
       
-      setJustifiications(response.data || [])
+      setJustifiications({all: response.data, filtered: response.data} || [])
       
     })
     .catch(err => {

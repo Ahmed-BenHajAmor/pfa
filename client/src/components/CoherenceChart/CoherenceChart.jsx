@@ -158,7 +158,7 @@ const CoherenceChart = ({ etudiantStats }) => {
           type="monotone"
           dataKey="thisMonth"
           stroke="#ff69b4"
-          name="Le mois avant-dernier" // Fixed label to match the image
+          name="Le mois avant-dernier" 
           strokeWidth={window.innerWidth < 480 ? 2 : 3}
         />
       </LineChart>
