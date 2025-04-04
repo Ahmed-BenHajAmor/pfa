@@ -1,4 +1,7 @@
 /* Global Styles */
+html {
+  scroll-behavior:smooth;
+}
 body {
 
   overflow-y:  auto;
@@ -25,7 +28,7 @@ body {
 }
 
 .logo {
-  font-size: 24px;
+  font-size: 40px;
   font-weight: bold;
   color: #152259;
 }
@@ -40,11 +43,12 @@ body {
   text-decoration: none;
   color: #152259;
   font-size: 14px;
-  transition: color 0.3s;
+  transition: all 0.3s linear;
 }
 
 .nav-links a:hover {
   color: #509CDB;
+  font-size: 15px;
 }
 
 .sign-in-btn {
@@ -241,7 +245,12 @@ body {
   font-size: 16px;
   color: #509CDB;
 }
-
+#faq{
+  background: linear-gradient(135deg, #152259, #509CDB);
+}
+#faq h2{
+  color: white;
+}
 /* FAQ Section */
 .faq-item {
   margin-bottom: 30px;
